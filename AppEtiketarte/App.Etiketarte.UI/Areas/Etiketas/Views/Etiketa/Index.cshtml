@@ -1,0 +1,55 @@
+﻿@model IEnumerable<App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.VmEtiketa>
+
+<h2>Etiketas</h2>
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="control">
+            @Html.AddAction("Create")
+        </div>
+        <table class="table table-bordered table-responsive jtv-cart-summary">
+            <thead>
+                <tr>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.NombreProducto)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Codigo)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </td>
+                    <td class="fila-centrada">Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.NombreProducto)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Codigo)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.ConfigurationAction("Presentaciones", "Etiketa", new { id = Html.Slug(item.IdEtiketa, item.Nombre) })
+                            @Html.EditAction("Edit", "Etiketa", new { id = Html.Slug(item.IdEtiketa, item.Nombre) })
+                            @Html.DetailAction("Details", "Etiketa", new { id = Html.Slug(item.IdEtiketa, item.Nombre) })
+                            @Html.DeleteAction("Delete", "Etiketa", new { id = Html.Slug(item.IdEtiketa, item.Nombre) })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

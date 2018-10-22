@@ -1,0 +1,139 @@
+﻿@model App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.VmArteForma
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Style/Etiketas/previsualizacion.css")" />
+    <style>
+        .containerImage .fatherDiv div img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+    </style>
+}
+
+<section id="app_arteForma" class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-title">
+            <h1>Configuracion de Etiqueta</h1>
+        </div>
+        <div class="box">
+            <div class="form-group form-theme">
+                <h3>Etalle de Arte y Forma</h3>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.NombreConfEtiketa)
+                    @Html.DetailFor(model => model.NombreConfEtiketa, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.NombreEtiketa)
+                    @Html.DetailFor(model => model.NombreEtiketa, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <hr />
+                <h3>Detalle del Arte</h3>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Codigo)
+                    @Html.DetailFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Nombre)
+                    @Html.DetailFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group form-theme arteforma-detail">
+                    @Html.Label("Arte")
+                    <div class="img-container">
+                        @Html.ShowImage(Model.ArtePath, Model.ArteSplit.ToArray())
+                        <div class="text-container" style="@("top: " + Model.TextTop + "px;" + " left: " + Model.TextLeft + "px;" + "width: " + Model.ContainerWidth + "px;")">
+                            <p id="demoText" class="text" style="@("text-align: " + Model.TextAlign + ";")"></p>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                <h3>Detalle de la Forma</h3>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.FormaCodigo)
+                    @Html.DetailFor(model => model.FormaCodigo, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.FormaNombre)
+                    @Html.DetailFor(model => model.FormaNombre, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group form-theme forma-detail">
+                    @Html.Label("Forma")
+                    <div class="form-container">
+                        @Html.ShowImage(Model.FormaPath, Model.FormaSplit.ToArray())
+                    </div>
+                </div>
+                <hr />
+
+                <h3>Detalle de Fuentes</h3>
+                <div class="form-group form-theme">
+                    @foreach (var item in Model.Tipografias)
+                    {
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label font-@item.Nombre.ToLower()">@item.Nombre</label>
+                        </div>
+                    }
+                </div>
+                <hr />
+
+                <h3>Detalle de Colores</h3>
+                <div class="form-group form-theme">
+                    @foreach (var item in Model.Colors)
+                    {
+                        <div class="show-color-row">
+                            <img class="show-color" style="background-color: @item.Hexadecimal;" />
+                        </div>
+                    }
+                </div>
+                <h3>Detalle del texto</h3>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.FontMinSize, "Tamaño de fuente mínimo [En pixeles]")
+                    @Html.DetailFor(model => model.FontMinSize, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.FontMaxSize, "Tamaño de fuente máximo [En pixeles]")
+                    @Html.DetailFor(model => model.FontMaxSize, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                <div class="form-group form-theme">
+                    <div class="form-actions">
+                        <br />
+                        @Html.BackAction("Arteforma", new { id = Model.IdConfEtiketa })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        var stringLength = '@(Model.NumeroLineas * Model.CaracteresLinea)';
+        var randomText = "PRUEBA".split('');
+        var stringDemo = [];
+
+        var limit = 0;
+
+        for (x = 0; x < stringLength; x++) {
+            if (limit >= randomText.length) {
+                limit = 0;
+            }
+
+            stringDemo.push(randomText[limit]);
+            limit++;
+        }
+
+        $('#demoText').text(stringDemo.join(''));
+
+        //Da el margen de manera dinámica al contenedor de la imagen
+        var arteHeight = $('.img-container').height();
+        var formaHeight = $('.form-container').height();
+
+        setHeightDinamycally('arteforma-detail', arteHeight);
+        setHeightDinamycally('forma-detail', formaHeight);
+
+        function setHeightDinamycally(element, height) {
+            $('.' + element).css('margin-bottom', height + 30);
+        }
+
+    </script>
+}

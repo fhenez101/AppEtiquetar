@@ -1,0 +1,38 @@
+﻿@model App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.Oferta.VmOferta
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="page-title">
+            <h1>Detalle de Oferta</h1>
+        </div>
+        <div class="box">
+            <div class="form-group form-theme">
+                @Html.LabelFor(model => model.NombreEtiketa, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DetailFor(model => model.NombreEtiketa, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group form-theme">
+                @Html.LabelFor(model => model.NombreConfEtiketa, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DetailFor(model => model.NombreConfEtiketa, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group form-theme">
+                @Html.LabelFor(model => model.UnidadPorPaquete, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DetailFor(model => model.UnidadPorPaquete, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group form-theme">
+                @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DetailFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group form-theme">
+                <div class="checkbox">
+                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.DisplayFor(model => model.Estado)
+                </div>
+            </div>
+            <div class="form-group form-theme">
+                <div class="form-actions">
+                    @Html.BackAction("ConfigOferta", new { id = Model.IdOferta })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

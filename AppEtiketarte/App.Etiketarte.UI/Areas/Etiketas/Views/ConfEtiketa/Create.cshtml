@@ -1,0 +1,53 @@
+﻿@model App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.VmConfEtiketa
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="page-title">
+            <h1>Agregar nueva Configuracion de Etiketa</h1>
+        </div>
+        <div class="box">
+            @using (Html.BeginForm("Create", "ConfEtiketa", new { area = "Etiketas" }, FormMethod.Post, new { autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Etiketa, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.DropDownListFor(model => model.Etiketa, Model.Etiketa, "--Select One--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Etiketa, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    <div class="checkbox">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Estado)
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    @Html.HiddenFor(model => model.IdEtiketa)
+                </div>
+                <div class="form-group form-theme">
+                    <div class="form-actions">
+                        @Html.BtnAdd()
+                        @Html.BackAction("Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#Etiketa').change(function () {
+                $('#IdEtiketa').val($(this).val())
+            })
+        });
+    </script>
+}

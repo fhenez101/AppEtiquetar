@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+@using App.Etiketarte.UI.Areas.Etiketas.Models.MailModels
+@model Contact
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .name {
+            color: red;
+        }
+
+        .phone {
+            color: blue;
+        }
+
+        .mail {
+            color: deeppink;
+        }
+
+        .comments {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Correo de contacto</h1>
+
+        <p class="name">Nombre: @Model.Nombre</p>
+        <p class="phone">Telefono: @Model.Telefono</p>
+        <p class="mail">Correo: @Model.Correo</p>
+        <p class="comments">Comentario: @Model.Comentario</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,498 @@
+﻿@using Microsoft.Owin.Security
+
+@{
+    var context = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    var authenticationType = context.FirstOrDefault()?.AuthenticationType;
+}
+
+@section styles {
+    <style>
+        .facebook-color {
+            color: #ffffff;
+        }
+
+            .facebook-color:hover {
+                color: #ffffff;
+            }
+    </style>
+}
+
+<section id="shopping-cart" class="main-container col1-layout">
+    <div class="main container">
+        <div class="shopping-cart-inner">
+            <div class="page-title">
+                <h2>Resumen del carrito de compra</h2>
+            </div>
+            <ul class="step">
+                <li id="step-review" class="step-item" data-target="revision">
+                    <span>01. Resumen</span>
+                </li>
+                <li id="step-login" class="step-item" data-target="inicio-sesion">
+                    <span>02. Iniciar sesión</span>
+                </li>
+                <li id="step-address" class="step-item" data-target="direccion">
+                    <span>03. Dirección</span>
+                </li>
+                <li id="step-shipping" class="step-item" data-target="envio">
+                    <span>04. Envío</span>
+                </li>
+                <li id="step-checkout" class="step-item" data-target="finalizar">
+                    <span>05. Finalizar</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-main cart-content" id="revision">
+            <div class="shopping-cart-inner">
+                <div class="page-content">
+                    <div class="heading-counter warning">Su carrito de compra contiene:&nbsp <span>2 Productos</span> </div>
+                    <div class="order-detail-content">
+                        <table class="table table-bordered table-responsive jtv-cart-summary">
+                            <thead>
+                                <tr>
+                                    <th class="cart_product">Producto</th>
+                                    <th>Descripcion</th>
+                                    <th>Texto</th>
+                                    <th>Precio unitario</th>
+                                    <th>Cant</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href="#">
+                                            <img src="@Url.Content("http://etiketarte.net/img/disenos/21001.png")" alt="Product">
+                                        </a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <p class="product-name">
+                                            <a href="#"> Etiqueta de ropa R1-1001 </a>
+                                        </p>
+                                        <small>Eliminar</small><br>
+                                    </td>
+                                    <td>
+                                        <p>Brenda Rodriguez</p>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡2500</span>
+                                    </td>
+                                    <td class="qty">
+                                        <input class="form-control input-sm" type="text" value="1">
+                                        <a href="#"><i class="fa fa-plus"></i></a>
+                                        <a href="#"><i class="fa fa-minus"></i></a>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡2500</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href="#">
+                                            <img src="@Url.Content("http://etiketarte.net/img/disenos/5631138.png")" alt="Product">
+                                        </a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <p class="product-name">
+                                            <a href="#"> Etiqueta academica A1-1138 </a>
+                                        </p>
+                                        <small>Eliminar</small><br>
+                                    </td>
+                                    <td>
+                                        <p>Guillermo Rivera</p>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡2500</span>
+                                    </td>
+                                    <td class="qty">
+                                        <input class="form-control input-sm" type="text" value="2">
+                                        <a href="#"><i class="fa fa-plus"></i></a>
+                                        <a href="#"><i class="fa fa-minus"></i></a>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡5000</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2" rowspan="2"></td>
+                                    <td colspan="3"><br><strong>Total del carrito I.V.I</strong></td>
+                                    <td colspan="2"><br><strong>₡5000</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="cart_navigation">
+                            <button class="button continue-shopping" title="Continuar comprando" type="button">
+                                <span>Continuar comprando</span>
+                            </button>
+                            <button id="review-submit" class=" step-submit button btn-proceed-checkout" title="Realizar orden" type="button">
+                                <span>Realizar orden</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Inicio de sesion -->
+        <div class="row cart-content" id="inicio-sesion">
+            <section class="col-sm-12 col-xs-12">
+                <div class="col-main">
+                    <div class="shopping-cart-inner">
+                        <div class="page-content checkout-page">
+                            <div class="box-border login-box">
+                                <div class="login-cart">
+                                    <h3>Inicie sesión con Facebook</h3>
+                                    <div class="facebook-button" title="Iniciar Sesión con Facebook">
+                                        <a href="@Url.Action("Login", "Account", new { provider = authenticationType, Area = string.Empty })" class="facebook-color">
+                                            <i class="fa fa-facebook-official fa-2x"></i>
+                                            <span>Inicie sesion</span>
+                                        </a>
+                                    </div>
+                                    <p>
+                                        Para continuar con su compra, por favor inicie sesión con su cuenta de Facebook
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="cart_navigation">
+                                <button class="button continue-shopping" title="Continuar comprando" type="button">
+                                    <span>Continuar comprando</span>
+                                </button>
+                                <button id="login-submit" class="step-submit button btn-proceed-checkout" title="Datos de envio" type="button">
+                                    <span>Continuar con la dirección de envío</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Direccion de envio -->
+        <div class="row cart-content" id="direccion">
+            <section class="col-sm-12 col-xs-12">
+                <div class="col-main">
+                    <div class="shopping-cart-inner">
+                        <div class="page-content checkout-page">
+                            <div class="box-border">
+                                <ul>
+                                    <li class="row">
+                                        <div class="col-sm-6">
+                                            <label for="first_name_1" class="required">Nombre</label>
+                                            <input class="input form-control" type="text" name="" id="first_name_1">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="last_name_1" class="required">Apellido</label>
+                                            <input class="input form-control" type="text" name="" id="last_name_1">
+                                        </div>
+                                    </li>
+                                    <li class="row">
+                                        <div class="col-sm-6">
+                                            <label for="telephone_1" class="required">Telefono</label>
+                                            <input class="input form-control" type="text" name="" id="telephone_1">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="email_address_1" class="required">Correo electrónico</label>
+                                            <input class="input form-control" type="text" name="" id="email_address_1">
+                                        </div>
+                                    </li>
+                                    <li class="row">
+                                        <div class="col-xs-12">
+                                            <label for="address_1" class="required">Dirección de envío</label>
+                                            <input class="input form-control" type="text" name="" id="address_1">
+                                        </div>
+                                    </li>
+                                    <li class="row">
+                                        <div class="col-sm-6">
+                                            <label for="city_1" class="required">Ciudad</label>
+                                            <input class="input form-control" type="text" name="" id="city_1">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Provincia</label>
+                                            <div class="custom_select">
+                                                <select id="Provincia" name="Provincia" class="input form-control">
+                                                    <option value="0">Seleccione una Provincia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="row">
+                                        <div class="col-sm-6">
+                                            <label for="postal_code_1" class="required">Código Postal</label>
+                                            <input class="input form-control" type="text" name="" id="postal_code_1">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Canton</label>
+                                            <div class="custom_select">
+                                                <select id="Canton" name="Canton" class="form-control">
+                                                    <option value="0">Seleccione un Canton</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cart_navigation">
+                                <button class="button continue-shopping" title="Continuar comprando" type="button">
+                                    <span>Continuar comprando</span>
+                                </button>
+                                <button id="address-submit" class="step-submit button btn-proceed-checkout" title="Datos de envio" type="button">
+                                    <span>Continuar con el metodo de envío</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Metodo de shipping -->
+        <div class="row cart-content" id="envio">
+            <section class="col-sm-12 col-xs-12">
+                <div class="col-main">
+                    <div class="shopping-cart-inner">
+                        <div class="page-content checkout-page">
+                            <div class="box-border">
+                                <ul class="shipping_method">
+                                    <li>
+                                        <p class="subcaption bold">Formas de envio</p>
+                                        <label for="radio_button_3">
+                                            <input type="radio" name="radio_3" id="radio_button_3">
+                                            Recoger en suscursal : <span>Gratis</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="radio_button_4">
+                                            <input type="radio" checked name="radio_3" id="radio_button_4">
+                                            EMS Correos : <span>₡1500</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cart_navigation">
+                                <button class="button continue-shopping" title="Continuar comprando" type="button">
+                                    <span>Continuar comprando</span>
+                                </button>
+                                <button id="shipping-submit" class="step-submit button btn-proceed-checkout" title="Datos de envio" type="button">
+                                    <span>Continuar con el pago</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Checkout -->
+        <div class="col-main cart-content" id="finalizar">
+            <div class="shopping-cart-inner">
+                <div class="page-content">
+                    <div class="order-detail-content">
+                        <table class="table table-bordered table-responsive jtv-cart-summary">
+                            <thead>
+                                <tr>
+                                    <th class="cart_product">Producto</th>
+                                    <th>Descripcion</th>
+                                    <th>Texto</th>
+                                    <th>Precio unitario</th>
+                                    <th>Cant</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href="#">
+                                            <img src="@Url.Content("http://etiketarte.net/img/disenos/21001.png")" alt="Product">
+                                        </a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <p class="product-name">
+                                            <a href="#"> Etiqueta de ropa R1-1001 </a>
+                                        </p>
+                                        <small>Eliminar</small><br>
+                                    </td>
+                                    <td>
+                                        <p>Brenda Rodriguez</p>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡2500</span>
+                                    </td>
+                                    <td class="qty">
+                                        <span>1</span>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡2500</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href="#">
+                                            <img src="@Url.Content("http://etiketarte.net/img/disenos/5631138.png")" alt="Product">
+                                        </a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <p class="product-name">
+                                            <a href="#"> Etiqueta academica A1-1138 </a>
+                                        </p>
+                                        <small>Eliminar</small><br>
+                                    </td>
+                                    <td>
+                                        <p>Guillermo Rivera</p>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡2500</span>
+                                    </td>
+                                    <td class="qty">
+                                        <span>2</span>
+                                    </td>
+                                    <td class="price">
+                                        <span>₡5000</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2" rowspan="3" class="checkout-envio">
+                                        <strong>Direccion de envio</strong>
+                                        <p class="checkout-direccion">
+                                            <br>
+                                            <span>50 metros al este de la galera, </span>
+                                            <span>Curridabat</span>
+                                        </p>
+                                        <p class="checkout-provincia">
+                                            San Jose
+                                        </p>
+                                        <p class="checkout-zip">
+                                            11801
+                                        </p>
+                                    </td>
+                                    <td colspan="3"><br><strong>Subtotal I.V.I</strong></td>
+                                    <td colspan="2"><br><strong>₡5000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><br><strong>Envio</strong></td>
+                                    <td colspan="2"><br><strong>₡1500</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><br><strong>Total</strong></td>
+                                    <td colspan="2"><br><strong></strong>₡6500</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="cart_navigation">
+                            <button type="submit" class="button btn-proceed-checkout" title="Finalizar Orden">
+                                <span>Finalizar Orden</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/Etiketas/shopping-cart.js")"></script>
+    <script>
+        $(function () {
+            console.log($('#Provincia').trigger('onload'));
+
+            //var ddlProvincia = $('#Provincia');
+            //var ddlCanton = $('#Canton');
+            //var ddlDistrito = $('#Distrito');
+
+            //load.confProvincia(ddlProvincia, ddlCanton, ddlDistrito);
+            //ddlProvincia.change(function () {
+            //    load.confCanton(ddlCanton, ddlDistrito, $(this).val());
+            //});
+            //ddlCanton.change(function () {
+            //    load.confDistrito(ddlDistrito, $(this).val())
+            //});
+        });
+
+        var load = (function () {
+            function PconfProvincia(provincia, canton, distrito) {
+                provincias(provincia);
+                canton.prop('disabled', true);
+                distrito.prop('disabled', true);
+            }
+
+            function PconfCanton(canton, distrito, codigo) {
+                cantones(canton, codigo);
+                canton.prop('disabled', false);
+                canton.find('option').remove();
+                distrito.find('option').remove();
+                distrito.prop('disabled', true);
+                distrito.append('<option value="0">Seleccione un Distrito</option>');
+            }
+
+            function PconfDistrito(distrito, codigo) {
+                distritos(distrito, codigo);
+                distrito.prop('disabled', false);
+            }
+
+            function provincias(element) {
+                $.ajax({
+                    data: {},
+                    url: '@Url.Action("GetProvincias", "Carrito")',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        $(response).each(function (i, v) {
+                            element.append('<option value="' + v.codigo_provincia + '">' + v.nombre_provincia + '</option>');
+                        });
+                    },
+                    error: function () {
+                        alert('Ocurrio un error en el servidor ..');
+                    }
+                });
+            }
+
+            function cantones(element, codigo) {
+                $.ajax({
+                    data: { codigo_provincia: codigo },
+                    url: '@Url.Action("GetCantones", "Carrito")',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        element.find('option').remove();
+                        element.append('<option value="0">Seleccione un Canton</option>');
+                        $(response).each(function (i, v) {
+                            element.append('<option value="' + v.codigo_canton + '">' + v.nombre_canton + '</option>');
+                        });
+                    },
+                    error: function () {
+                        alert('Ocurrio un error en el servidor ..');
+                    }
+                });
+            }
+
+            function distritos(element, codigo) {
+                $.ajax({
+                    data: { codigo_canton: codigo },
+                    url: '@Url.Action("GetDistritos", "Carrito")',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        element.find('option').remove();
+                        element.append('<option value="0">Seleccione un Distrito</option>');
+                        $(response).each(function (i, v) {
+                            element.append('<option value="' + v.codigo_distrito + '">' + v.nombre_distrito + '</option>');
+                        });
+                    },
+                    error: function () {
+                        alert('Ocurrio un error en el servidor ..');
+                    }
+                });
+            }
+
+            return {
+                confProvincia: PconfProvincia,
+                confCanton: PconfCanton,
+                confDistrito: PconfDistrito
+            };
+        })();
+    </script>
+}

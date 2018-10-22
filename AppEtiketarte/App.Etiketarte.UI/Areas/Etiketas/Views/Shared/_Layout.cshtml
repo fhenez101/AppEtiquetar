@@ -1,0 +1,268 @@
+﻿@using Microsoft.Owin.Security
+@using App.Etiketarte.UI.Settings
+@using App.Etiketarte.UI.Models.Identity
+
+@{
+    var context = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    var authenticationType = context.FirstOrDefault()?.AuthenticationType;
+    var objSession = SessionSettings<FacebookModel>.FacebookModel;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Etiketarte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/favicon.ico")">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,500,700,800" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lemonada|Lobster|Raleway:400,700|Shadows+Into+Light|Poppins" />
+    @Styles.Render("~/Bundles/Style/Etiketas")
+    @RenderSection("styles", required: false)
+</head>
+<body class="cms-index-index cms-home-page">
+    <div id="page">
+        <header>
+            <div class="header-container">
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="welcome-msg">
+                                    <i class="fa fa-phone"></i>&nbsp + (506) 8819-0331
+                                </div>
+                            </div>
+                            <div class="col-xs-6 hidden-xs">
+                                <div class="jtv-top-links">
+                                    <div class="links">
+                                        <ul>
+                                            <li>
+                                                <a title="My Account" href="@Url.Action("Index", "Dashboard", new { Area = "Etiketas" })">
+                                                    <span class="hidden-xs">Mi cuenta</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                @if (objSession.IsInSession)
+                                                {
+                                                    <img src="@objSession.Picture.Data.Url" alt="" width="24" height="24" class="">
+                                                    <a href="@Url.Action("LogOff", "Account", new { Area = string.Empty })">
+                                                        <span class="hidden-xs">Cerrar Sesión</span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@Url.Action("Login", "Account", new { provider = authenticationType, Area = string.Empty })">
+                                                        <span class="hidden-xs">Iniciar Sesión</span>
+                                                    </a>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <div class="container-fluid header-menu-container">
+                <div class="mm-toggle-wrap">
+                    <div class="mm-toggle">
+                        <i class="fa fa-align-justify"></i>
+                        <span class="mm-label">Menu</span>
+                    </div>
+                </div>
+                <div class="nav-inner container">
+                    <ul id="nav" class="hidden-xs">
+                        <li class="mega-menu">
+                            <img src="@Url.Content("~/Content/Image/Etiketas/logo-etiketart.png")" class="navbar-logo" />
+                        </li>
+                        <li class="mega-menu">
+                            <a class="level-top" href="@Url.Action("Index", "Inicio", new { Area = "Etiketas" })">
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li class="mega-menu">
+                            <a class="level-top" href="@Url.Action("Index", "Nosotros", new { Area = "Etiketas" })">
+                                <span>Nosotros</span>
+                            </a>
+                        </li>
+                        <li class="nav-custom-link mega-menu">
+                            <a class="level-top">
+                                <span>Etiketas</span>
+                            </a>
+                            <div class="jtv-menu-block-wrapper custom-menu">
+                                <div class="header-nav-dropdown-wrapper">
+                                    <div class="jtv-custom-box">
+                                        <a href="@Url.Action("Ropa", "Ordenar", new { Area = "Etiketas" })">
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Iconos/ropa-icono.png")" alt="Etiquetas de ropa" class="icono-etiquetas"/>
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Titulos/titulo.ropa.png")" class="heading" />
+                                        </a>
+                                    </div>
+                                    <div class="jtv-custom-box">
+                                        <a href="@Url.Action("Cosas", "Ordenar", new { Area = "Etiketas" })">
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Iconos/cosas-icono.png")" alt="Etiquetas de Cosas" class="icono-etiquetas" />
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Titulos/titulo-cosas.png")" class="heading"/>
+                                        </a>
+                                    </div>
+                                    <div class="jtv-custom-box">
+                                        <a href="@Url.Action("Cuadernos", "Ordenar", new { Area = "Etiketas" })">
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Iconos/cuadernos-iconos.png")" alt="Etiquetas de cuadernos" class="icono-etiquetas" />
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Titulos/titulo-cuadernos.png")" class="heading" />
+                                        </a>
+                                    </div>
+                                    <div class="jtv-custom-box">
+                                        <a href="@Url.Action("Surtido", "Ordenar", new { Area = "Etiketas" })">
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Iconos/llaveros-icono.png")" alt="Llaveros con diseños" class="icono-etiquetas" /> 
+                                            <img src="@Url.Content("~/Content/Image/Etiketas/Titulos/titulo-llaveros.png")" class="heading" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mega-menu">
+                            <a class="level-top" href="@Url.Action("Index", "Contacto", new { Area = "Etiketas" })">
+                                <span>Contacto</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        @RenderBody()
+
+        <footer>
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div style="text-align:center">
+                            <a href="@Url.Action("Index", "Inicio", new { Area = "Etiketas" })">
+                                <img src="@Url.Content("~/Content/Image/Etiketas/logo-etiketart.png")" />
+                            </a>
+                        </div>
+                        <address>
+                            <p><i class="fa fa-map-marker"></i>Etiketarte, Curridabat, San Jose</p>
+                            <p><i class="fa fa-mobile"></i><span>+ (506) 8819-0331</span></p>
+                            <p>
+                                <i class="fa fa-envelope"></i>
+                                <span>
+                                    <a href="mailto:info@etiketarte.net">info@etiketarte.net</a>
+                                </span>
+                            </p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12 col-md-3">
+                            <div class="footer-links">
+                                <h5>Useful links</h5>
+                                <ul class="links">
+                                    <li><a href="#" title="Opciones de envio">Opciones de envio</a></li>
+                                    <li><a href="#" title="Ayuda &amp; FAQs">Ayuda &amp; FAQs</a></li>
+                                    <li><a href="#" title="Metodos de">Metodos de pago</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 col-md-3">
+                            <div class="footer-links">
+                                <h5>Servicios</h5>
+                                <ul class="links">
+                                    <li><a href="@Url.Action("Index", "Dashboard", new { Area = "Etiketas" })">Cuenta</a></li>
+                                    <li><a href="@Url.Action("Index", "Carrito", new { Area = "Etiketas" })">Carrito de compra</a></li>
+                                    <li><a href="#">Rastrear su orden</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 col-md-2">
+                            <div class="footer-links">
+                                <h5>Informacion</h5>
+                                <ul class="links">
+                                    <li><a href="@Url.Action("Index", "SiteMap", new { Area = "Etiketas" })">Site Map </a></li>
+                                    <li><a href="@Url.Action("Index", "Nosotros", new { Area = "Etiketas" })">Nosotros</a></li>
+                                    <li><a href="@Url.Action("Index", "Contacto", new { Area = "Etiketas" })">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </div>                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="footer-links">
+                                <div class="social">
+                                    <h5>Siguenos</h5>
+                                    <ul class="inline-mode">
+                                        <li class="social-network fb">
+                                            <a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social-network googleplus">
+                                            <a title="Connect us on Google+" target="_blank" href="https://plus.google.com">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social-network tw">
+                                            <a title="Connect us on Twitter" target="_blank" href="https://twitter.com/">
+                                                <i class="icon-social-twitter icons"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social-network instagram">
+                                            <a title="Connect us on Instagram" target="_blank" href="https://instagram.com/">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-12 coppyright">
+                            Copyright © @DateTime.Now.Year
+                            <a href="#">&nbsp Comercio </a>. Todos los derechos reservados.
+                        </div>
+                        <div class="col-sm-7 col-xs-12 payment-accept">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-1.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-2.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-3.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-4.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/Bundles/Script/Etiketas")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

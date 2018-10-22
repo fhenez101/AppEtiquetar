@@ -1,0 +1,49 @@
+﻿@model IEnumerable<App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.VmConfEtiketa>
+
+<h2>Configuracion de etiketa</h2>
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="control">
+            @Html.AddAction("Create")
+        </div>
+        <table class="table table-bordered table-responsive jtv-cart-summary">
+            <thead>
+                <tr>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.NombreEtiketa)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </td>
+                    <td class="fila-centrada">Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.NombreEtiketa)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.ConfigurationAction("ArteForma", "ConfEtiketa", new { id = Html.Slug(item.IdConfEtiketa, item.Nombre) })
+                            @Html.EditAction("Edit", "ConfEtiketa", new { id = Html.Slug(item.IdConfEtiketa, item.Nombre) })
+                            @Html.DetailAction("Details", "ConfEtiketa", new { id = Html.Slug(item.IdConfEtiketa, item.Nombre) })
+                            @Html.DeleteAction("Delete", "ConfEtiketa", new { id = Html.Slug(item.IdConfEtiketa, item.Nombre) })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<App.Etiketarte.Model.Tipografia>
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Style/Etiketas/previsualizacion.css")" />
+}
+
+<h2>Tipografías</h2>
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="control">
+            @Html.AddAction("Create")
+        </div>
+        <table class="table table-bordered table-responsive jtv-cart-summary">
+            <thead>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Nombre)</td>
+                    <td class="fila-centrada">@Html.DisplayNameFor(model => model.Estado)</td>
+                    <td class="fila-centrada">Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <p class="font-@item.Nombre.ToLower()">@item.Nombre</p>
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.EditAction("Edit", "Tipografia", new { id = Html.Slug(item.IdTipoGrafia, item.Nombre) })
+                            @Html.DetailAction("Details", "Tipografia", new { id = Html.Slug(item.IdTipoGrafia, item.Nombre) })
+                            @Html.DeleteAction("Delete", "Tipografia", new { id = Html.Slug(item.IdTipoGrafia, item.Nombre) })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

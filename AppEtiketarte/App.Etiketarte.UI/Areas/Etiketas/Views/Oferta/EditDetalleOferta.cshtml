@@ -1,0 +1,131 @@
+﻿@model App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.Oferta.VmDetalleOferta
+
+@{
+    ViewBag.Title = "EditDetalleOferta";
+}
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="page-title">
+            <h1>Editar el detalle de la Oferta</h1>
+        </div>
+        <div class="box">
+            @using (Html.BeginForm("EditDetalleOferta", "Oferta", new { area = "Etiketas" }, FormMethod.Post, new { autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.IdEtiketa, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditDropDownListFor(model => model.IdEtiketa, Model.CmbEtiketas, Model.IdEtiketa, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdEtiketa, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.CmbConfEtiketas, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <select id="CmbConfEtiketas" name="IdConfEtiketa" class="input form-control"></select>
+                    @Html.ValidationMessageFor(model => model.CmbConfEtiketas, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.CmbPresentaciones, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <select id="CmbPresentaciones" name="IdPresentacion" class="input form-control"></select>
+                    @Html.ValidationMessageFor(model => model.CmbPresentaciones, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    <div class="checkbox">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Estado)
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    @Html.HiddenFor(model => model.IdDetalleOferta)
+                    @Html.HiddenFor(model => model.IdOferta)
+                </div>
+                <div class="form-group form-theme">
+                    <div class="form-actions">
+                        @Html.BtnModify()
+                        @Html.BackAction("ConfigOferta", new { id = Model.IdOferta })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        $(function () {
+            var ddlEtiketa = $('#IdEtiketa');
+            var ddlConfEtiketa = $('#CmbConfEtiketas');
+            var ddlPresentacion = $('#CmbPresentaciones');
+
+            load.init(ddlEtiketa, ddlConfEtiketa, ddlPresentacion);
+
+            ddlEtiketa.change(function () {
+                load.confEtiketas(ddlConfEtiketa, $(this).val());
+                load.presentaciones(ddlPresentacion, ddlConfEtiketa.val());
+            });
+
+            ddlConfEtiketa.change(function () {
+                load.presentaciones(ddlPresentacion, $(this).val());
+            });
+        });
+
+        var load = (function () {
+            var func = {
+                Init: function (ddlEtiketa, ddlConfEtiketa, ddlPresentacion) {
+                    func.ConfEtiketas(ddlConfEtiketa, ddlEtiketa.val());
+                    func.Presentaciones(ddlPresentacion, ddlConfEtiketa.val());
+                },
+                AjaxCall: function (url, data) {
+                    var result = {};
+
+                    $.ajax({
+                        data: data,
+                        url: url,
+                        async: false,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (response) {
+                            result = response;
+                        },
+                        error: function () {
+                            alert('Ocurrio un error en el servidor ..');
+                        }
+                    });
+
+                    return result;
+                },
+                ConfEtiketas: function (cmbConfEtiketas, idEtiketa) {
+                    cmbConfEtiketas.find('option').remove();
+
+                    var result = func.AjaxCall('@Url.Action("GetConfEtiketaOferta", "Oferta")', { 'idEtiketa': idEtiketa });
+
+                    $.each(result.CmbConfEtiketas, function (i, v) {
+                        cmbConfEtiketas.append('<option value="' + v.Value + '">' + v.Text + '</option>');
+                    });
+                },
+                Presentaciones: function (cmbPresentaciones, idEtiketa) {
+                    cmbPresentaciones.find('option').remove();
+
+                    var result = func.AjaxCall('@Url.Action("GetPresentacionOferta", "Oferta")', { 'idEtiketa': idEtiketa });
+
+                    $.each(result.CmbPresentaciones, function (i, v) {
+                        cmbPresentaciones.append('<option value="' + v.Value + '">' + v.Text + '</option>');
+                    });
+                }
+            };
+
+            return {
+                init: func.Init,
+                confEtiketas: func.ConfEtiketas,
+                presentaciones: func.Presentaciones
+            };
+        })();
+    </script>
+}

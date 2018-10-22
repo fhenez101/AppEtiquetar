@@ -1,0 +1,128 @@
+﻿@using Microsoft.Owin.Security
+@using App.Etiketarte.UI.Settings
+@using App.Etiketarte.UI.Models.Identity
+
+@{
+    var context = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    var authenticationType = context.FirstOrDefault()?.AuthenticationType;
+    var objSession = SessionSettings<FacebookModel>.FacebookModel;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Etiketarte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/favicon.ico")">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,500,700,800" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lemonada|Lobster|Raleway:400,700|Shadows+Into+Light|Poppins" />
+    @Styles.Render("~/Bundles/Style/Etiketas")
+    @RenderSection("styles", required: false)
+</head>
+<body class="cms-index-index cms-home-page">
+    <div id="page">
+        <header>
+            <div class="header-container">
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="welcome-msg">
+                                    <i class="fa fa-phone"></i>&nbsp + (506) 8819-0331
+                                </div>
+                            </div>
+                            <div class="col-xs-6 hidden-xs">
+                                <div class="jtv-top-links">
+                                    <div class="links">
+                                        <ul>
+                                            <li>
+                                                <a title="My Account" href="@Url.Action("Index", "Dashboard", new { Area = "Etiketas" })">
+                                                    <span class="hidden-xs">Mi cuenta</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                @if (objSession.IsInSession)
+                                                {
+                                                    <img src="@objSession.Picture.Data.Url" alt="" width="24" height="24" class="">
+                                                    <a href="@Url.Action("LogOff", "Account", new { Area = string.Empty })">
+                                                        <span class="hidden-xs">Cerrar Sesión</span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@Url.Action("Login", "Account", new { provider = authenticationType, Area = string.Empty })">
+                                                        <span class="hidden-xs">Iniciar Sesión</span>
+                                                    </a>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="main-container col1-layout admin-panel">
+            <div class="container main">
+                <aside class="col-left sidebar col-sm-3 admin-panel__controles">
+                    <div class="block block-account">
+                        <div class="block-title">Controles</div>
+                        <div class="block-content">
+                            @Html.Menu()
+                        </div>
+                    </div>
+                </aside>
+                <div class="admin-panel__content">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-12 coppyright">Copyright © 2017 <a href="#">&nbsp Comercio </a>. Todos los derechos reservados. </div>
+                        <div class="col-sm-7 col-xs-12 payment-accept">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-1.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-2.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-3.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="@Url.Content("~/Content/Image/Etiketas/payment-4.png")" alt="Payment Card">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/Bundles/Script/Etiketas")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

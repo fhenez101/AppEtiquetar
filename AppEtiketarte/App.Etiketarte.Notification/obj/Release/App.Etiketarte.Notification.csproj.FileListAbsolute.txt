@@ -1,0 +1,5 @@
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Notification\bin\Release\App.Etiketarte.Notification.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Notification\bin\Release\App.Etiketarte.Notification.pdb
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Notification\obj\Release\App.Etiketarte.Notification.csprojResolveAssemblyReference.cache
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Notification\obj\Release\App.Etiketarte.Notification.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Notification\obj\Release\App.Etiketarte.Notification.pdb

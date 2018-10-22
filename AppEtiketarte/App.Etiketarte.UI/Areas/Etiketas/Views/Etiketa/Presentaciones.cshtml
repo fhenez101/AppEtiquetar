@@ -1,0 +1,59 @@
+﻿@model IEnumerable<App.Etiketarte.Model.Presentacion>
+
+<h2>Presentaciones</h2>
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="control">
+            @Html.AddAction("CreatePresentacion", new { id = ViewBag.IdEtiketa })
+        </div>
+        <table class="table table-bordered table-responsive jtv-cart-summary">
+            <thead>
+                <tr>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Etiketa.Nombre)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.UnidadPorPaquete)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Precio)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </td>
+                    <td class="fila-centrada">Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Etiketa.Nombre)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.UnidadPorPaquete)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Precio)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.EditAction("EditPresentacion", "Etiketa", new { id = item.IdPresentacion })
+                            @Html.DetailAction("DetailsPresentacion", "Etiketa", new { id = item.IdPresentacion })
+                            @Html.DeleteAction("DeletePresentacion", "Etiketa", new { id = item.IdPresentacion })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="form-group form-theme">
+            <div class="form-actions">
+                @Html.BackAction("Index")
+            </div>
+        </div>
+    </div>
+</section>

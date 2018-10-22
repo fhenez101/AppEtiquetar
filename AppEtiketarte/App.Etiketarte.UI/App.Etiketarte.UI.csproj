@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F7E564E-61A3-4630-AC23-DB6046339615}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.Etiketarte.UI</RootNamespace>
+    <AssemblyName>App.Etiketarte.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44352</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="LowercaseRoutesMVC, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LowercaseRoutesMVC.1.0.3\lib\LowercaseRoutesMVC.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.4.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.4.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.4.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.4.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.4.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\CarritoController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\ColorController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\ConfEtiketaController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\ContactoController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\EtiketaController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\FormaController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\InicioController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\LogoController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\NosotrosController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\OfertaController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\OrdenarController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\ProductoController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\PromocionController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\SiteMapController.cs" />
+    <Compile Include="Areas\Etiketas\Controllers\TipografiaController.cs" />
+    <Compile Include="Areas\Etiketas\EtiketasAreaRegistration.cs" />
+    <Compile Include="Areas\Etiketas\Models\MailModels\Contact.cs" />
+    <Compile Include="Areas\Etiketas\Models\ViewModels\Oferta\VmDetalleOferta.cs" />
+    <Compile Include="Areas\Etiketas\Models\ViewModels\Oferta\VmOferta.cs" />
+    <Compile Include="Areas\Etiketas\Models\ViewModels\Ordenes\TipoEtiketa.cs" />
+    <Compile Include="Areas\Etiketas\Models\ViewModels\Ordenes\VmEtiketas.cs" />
+    <Compile Include="Areas\Etiketas\Models\ViewModels\VmArteForma.cs" />
+    <Compile Include="Areas\Etiketas\Models\ViewModels\VmConfEtiketa.cs" />
+    <Compile Include="Areas\Etiketas\Models\ViewModels\VmEtiketa.cs" />
+    <Compile Include="Areas\Pymes\Controllers\InicioController.cs" />
+    <Compile Include="Areas\Pymes\PymesAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Buttons.cs" />
+    <Compile Include="Helpers\Email.cs" />
+    <Compile Include="Helpers\FriendlyUrl.cs" />
+    <Compile Include="Helpers\Input.cs" />
+    <Compile Include="Helpers\MenuOption.cs" />
+    <Compile Include="Helpers\Images.cs" />
+    <Compile Include="Models\Email\TestTemplate.cs" />
+    <Compile Include="Models\Identity\AccountViewModels.cs" />
+    <Compile Include="Models\Identity\CustomUserManager.cs" />
+    <Compile Include="Models\Identity\CustomUserStore.cs" />
+    <Compile Include="Models\Identity\FacebookModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\AjaxOnlyAttribute.cs" />
+    <Compile Include="Security\LoginOnceAttribute.cs" />
+    <Compile Include="Security\ReCaptchaAttribute.cs" />
+    <Compile Include="Security\RouteDataAttribute.cs" />
+    <Compile Include="Security\SecureAttribute.cs" />
+    <Compile Include="Settings\BaseController.cs" />
+    <Compile Include="Settings\BaseRazorViewEngine.cs" />
+    <Compile Include="Settings\Configuration.cs" />
+    <Compile Include="Settings\EmailSettings.cs" />
+    <Compile Include="Settings\ExtensionMethods.cs" />
+    <Compile Include="Settings\RequestSettings.cs" />
+    <Compile Include="Settings\SessionSettings.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-slider.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Image\Etiketas\arrow-up1.png" />
+    <Content Include="Content\Image\Etiketas\Artes\cohete.png" />
+    <Content Include="Content\Image\Etiketas\Art\decora.png" />
+    <Content Include="Content\Image\Etiketas\Art\decorativos.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\decoroom.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\diferencia.png" />
+    <Content Include="Content\Image\Etiketas\Art\etiketas.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\ico-decorativos.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\ico-decoroom.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\ico-etiketas.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\ico-pizarras.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\lateral-1.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\organiza.png" />
+    <Content Include="Content\Image\Etiketas\Art\pizarras.jpg" />
+    <Content Include="Content\Image\Etiketas\Art\testimonio1.png" />
+    <Content Include="Content\Image\Etiketas\Art\testimonio2.png" />
+    <Content Include="Content\Image\Etiketas\Art\Testimonio3.png" />
+    <Content Include="Content\Image\Etiketas\Backgrounds\775.jpg" />
+    <Content Include="Content\Image\Etiketas\Backgrounds\776.jpg" />
+    <Content Include="Content\Image\Etiketas\bkg_rating.png" />
+    <Content Include="Content\Image\Etiketas\btn_remove.png" />
+    <Content Include="Content\Image\Etiketas\bullet_1.png" />
+    <Content Include="Content\Image\Etiketas\checkbox.png" />
+    <Content Include="Content\Image\Etiketas\checked.png" />
+    <Content Include="Content\Image\Etiketas\close-icon.png" />
+    <Content Include="Content\Image\Etiketas\delete_icon.png" />
+    <Content Include="Content\Image\Etiketas\f-box-close-icon.png" />
+    <Content Include="Content\Image\Etiketas\fancybox.png" />
+    <Content Include="Content\Image\Etiketas\fancybox_close-mega.png" />
+    <Content Include="Content\Image\Etiketas\fancybox_overlay.png" />
+    <Content Include="Content\Image\Etiketas\fancybox_sprite.png" />
+    <Content Include="Content\Image\Etiketas\Formas\10C2.png" />
+    <Content Include="Content\Image\Etiketas\Formas\1R1.png" />
+    <Content Include="Content\Image\Etiketas\Formas\2R2.png" />
+    <Content Include="Content\Image\Etiketas\Formas\3R3.png" />
+    <Content Include="Content\Image\Etiketas\Formas\9C1.png" />
+    <Content Include="Content\Image\Etiketas\glyphicons-halflings-white.png" />
+    <Content Include="Content\Image\Etiketas\glyphicons-halflings.png" />
+    <Content Include="Content\Image\Etiketas\Iconos\accesorios-icono.png" />
+    <Content Include="Content\Image\Etiketas\Iconos\cosas-icono.png" />
+    <Content Include="Content\Image\Etiketas\Iconos\cuadernos-iconos.png" />
+    <Content Include="Content\Image\Etiketas\Iconos\llaveros-icono.png" />
+    <Content Include="Content\Image\Etiketas\Iconos\ropa-icono.png" />
+    <Content Include="Content\Image\Etiketas\icon_grid.png" />
+    <Content Include="Content\Image\Etiketas\icon_grid_act.png" />
+    <Content Include="Content\Image\Etiketas\icon_list.png" />
+    <Content Include="Content\Image\Etiketas\icon_list_over.png" />
+    <Content Include="Content\Image\Etiketas\left-a.png" />
+    <Content Include="Content\Image\Etiketas\logo-etiketart.png" />
+    <Content Include="Content\Image\Etiketas\minus.png" />
+    <Content Include="Content\Image\Etiketas\payment-1.png" />
+    <Content Include="Content\Image\Etiketas\payment-2.png" />
+    <Content Include="Content\Image\Etiketas\payment-3.png" />
+    <Content Include="Content\Image\Etiketas\payment-4.png" />
+    <Content Include="Content\Image\Etiketas\plus.png" />
+    <Content Include="Content\Image\Etiketas\right-a.png" />
+    <Content Include="Content\Image\Etiketas\search-icon.png" />
+    <Content Include="Content\Image\Etiketas\signal.png" />
+    <Content Include="Content\Image\Etiketas\Slider\slide-img-0.png" />
+    <Content Include="Content\Image\Etiketas\Slider\slide-img1.jpg" />
+    <Content Include="Content\Image\Etiketas\Slider\slide-img2.jpg" />
+    <Content Include="Content\Image\Etiketas\Slider\slide-img3.jpg" />
+    <Content Include="Content\Image\Etiketas\Titulos\titulo-accesorios.png" />
+    <Content Include="Content\Image\Etiketas\Titulos\titulo-cosas.png" />
+    <Content Include="Content\Image\Etiketas\Titulos\titulo-cuadernos.png" />
+    <Content Include="Content\Image\Etiketas\Titulos\titulo-llaveros.png" />
+    <Content Include="Content\Image\Etiketas\Titulos\titulo.ropa.png" />
+    <Content Include="Content\Image\Etiketas\to-top-arrow.png" />
+    <Content Include="Content\Image\Etiketas\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\Image\Pymes\1.jpg" />
+    <Content Include="Content\Image\Pymes\2.jpg" />
+    <Content Include="Content\Image\Pymes\3.jpg" />
+    <Content Include="Content\Image\Pymes\4.jpg" />
+    <Content Include="Content\Image\Pymes\android-icon-36x36.png" />
+    <Content Include="Content\Style\Etiketas\animate.css" />
+    <Content Include="Content\Style\Etiketas\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\Style\Etiketas\bootstrap.min.css" />
+    <Content Include="Content\Style\Etiketas\fancybox.css" />
+    <Content Include="Content\Style\Etiketas\flexslider.css" />
+    <Content Include="Content\Style\Etiketas\font-awesome.min.css" />
+    <Content Include="Content\Style\Etiketas\jquery-ui.css" />
+    <Content Include="Content\Style\Etiketas\jquery.bxslider.css" />
+    <Content Include="Content\Style\Etiketas\jquery.fancybox.css" />
+    <Content Include="Content\Style\Etiketas\jtv-mobile-menu.css" />
+    <Content Include="Content\Style\Etiketas\owl.carousel.css" />
+    <Content Include="Content\Style\Etiketas\owl.transitions.css" />
+    <Content Include="Content\Style\Etiketas\previsualizacion.css" />
+    <Content Include="Content\Style\Etiketas\responsive.css" />
+    <Content Include="Content\Style\Etiketas\revolution-slider.css" />
+    <Content Include="Content\Style\Etiketas\side.css" />
+    <Content Include="Content\Style\Etiketas\simple-line-icons.css" />
+    <Content Include="Content\Style\Etiketas\style.css" />
+    <Content Include="Content\Style\Pymes\main.css" />
+    <Content Include="Content\Style\Pymes\soon.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons.dev.svg" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Etiketas\Views\web.config" />
+    <Content Include="Areas\Pymes\Views\web.config" />
+    <Content Include="fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="fonts\font-awesome\fontawesome-webfont.woff2" />
+    <Content Include="fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons.eot" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons.ttf" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Etiketas\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Inicio\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Color\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Color\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Color\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Color\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Forma\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Forma\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Forma\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Forma\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Logo\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Logo\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Logo\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Logo\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Producto\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Producto\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Producto\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Producto\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Tipografia\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Tipografia\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Tipografia\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Tipografia\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Content\Style\Etiketas\bootstrap-colorpicker.min.css.map" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Dashboard\Perfil.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\CreateArteForma.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\ArteForma.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\DetailsArteForma.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Ordenar\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Ordenar\Ropa.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Ordenar\Cosas.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Nosotros\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Contacto\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Carrito\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Carrito\Shoping.cshtml" />
+    <Content Include="Areas\Pymes\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Pymes\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Pymes\Views\Inicio\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\SiteMap\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\ConfEtiketa\EditArteForma.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Email\Contact.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Contacto\Send.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\Presentaciones.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\CreatePresentacion.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\EditPresentacion.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Etiketa\DetailsPresentacion.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\Index.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\Details.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\Create.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\Edit.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\ConfigOferta.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\CreateDetalleOferta.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\DetailsDetalleOferta.cshtml" />
+    <Content Include="Areas\Etiketas\Views\Oferta\EditDetalleOferta.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Etiketas\Views\Promocion\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\MVC5.pubxml" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\AjaxSettings\Settings.js" />
+    <Content Include="Scripts\bootstrap-slider.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Etiketas\bootstrap.min.js" />
+    <Content Include="Scripts\Etiketas\colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="Scripts\Etiketas\jquery-ui.js" />
+    <Content Include="Scripts\Etiketas\jquery.fancybox.js" />
+    <Content Include="Scripts\Etiketas\jquery.flexslider.js" />
+    <Content Include="Scripts\Etiketas\jquery.min.js" />
+    <Content Include="Scripts\Etiketas\jtv-mobile-menu.js" />
+    <Content Include="Scripts\Etiketas\main.js" />
+    <Content Include="Scripts\Etiketas\owl.carousel.min.js" />
+    <Content Include="Scripts\Etiketas\rev-slider.js" />
+    <Content Include="Scripts\Etiketas\slider-index.js" />
+    <Content Include="Scripts\Etiketas\text-position.js" />
+    <Content Include="Scripts\Etiketas\shopping-cart.js" />
+    <Content Include="Scripts\Etiketas\insert-arteforma.js" />
+    <Content Include="Scripts\Etiketas\previewer.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Pymes\custom.js" />
+    <Content Include="Scripts\Pymes\html5shiv.js" />
+    <Content Include="Scripts\Pymes\jquery.themepunch.revolution.min.js" />
+    <Content Include="Scripts\Pymes\plugins.js" />
+    <Content Include="Scripts\Pymes\respond.min.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Error\BadRequest.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\InternalServerError.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Pymes\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App.Etiketarte.Business\App.Etiketarte.Business.csproj">
+      <Project>{201b07e2-50c3-4832-a3de-549854c5d0e8}</Project>
+      <Name>App.Etiketarte.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Etiketarte.Model\App.Etiketarte.Model.csproj">
+      <Project>{d244a06f-989a-4336-b99a-6e3a596ff00f}</Project>
+      <Name>App.Etiketarte.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Etiketarte.Notification\App.Etiketarte.Notification.csproj">
+      <Project>{85c86250-efab-44b0-b4a1-fb7f60e84ca5}</Project>
+      <Name>App.Etiketarte.Notification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Etiketarte.Utilities\App.Etiketarte.Utilities.csproj">
+      <Project>{e4c662df-e77f-42ca-b782-5a394f138c58}</Project>
+      <Name>App.Etiketarte.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63559</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44352/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

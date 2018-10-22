@@ -1,0 +1,93 @@
+﻿@model App.Etiketarte.Model.Forma
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="page-title">
+            <h1>Editar forma</h1>
+        </div>
+        <div class="box">
+            @using (Html.BeginForm("Edit", "Forma", new { area = "Etiketas" }, FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group form-theme">
+                    @Html.Label("Forma", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.ShowImage(Model.Path, Model.FormaSplits.ToArray())
+                </div>
+                <div class="form-group form-theme upload-div">
+                    @Html.CreateImage()
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control upper-case" } })
+                    @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control capitalize" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    <div class="checkbox">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Estado)
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    @Html.HiddenFor(model => model.IdForma)
+                    @Html.HiddenFor(model => model.RowVersion)
+                </div>
+                <div class="form-group form-theme">
+                    <div class="form-actions">
+                        @Html.BtnModify()
+                        @Html.BackAction("Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(document).on('change', '.btn-file :file', function () {
+                var input = $(this);
+                var label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function (event, label) {
+                var input = $(this).parents('.input-group').find(':text');
+                var log = label;
+
+                if (input.length) {
+                    input.val(log);
+                }
+                else {
+                    if (log) {
+                        console.log(log);
+                    }
+                }
+            });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#img-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#imgInp").change(function () {
+                readURL(this);
+            });
+        });
+    </script>
+}

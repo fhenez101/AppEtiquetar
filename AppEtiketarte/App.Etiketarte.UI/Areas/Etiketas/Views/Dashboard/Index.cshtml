@@ -1,0 +1,66 @@
+﻿<div class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-sm-9 wow">
+                <div class="col-main">
+                    <div class="my-account">
+                        <div class="page-title">
+                            <h2>¡Bienvenido fulano de Tal! :)</h2>
+                        </div>
+                        <div class="dashboard">
+                            <div class="welcome-msg">
+                                <p>
+                                    Desde el panel de su cuenta etiketarte puedes revisar el estado de tus ordenes y actualizar tu informacion. Te recomendamos tener tu informacion de contacto actualizada
+                                </p>
+                            </div>
+                            <div class="recent-orders">
+                                <div class="title-buttons">
+                                    <strong>Ordenes recientes</strong>
+                                    <a href="#">Ver todas las ordenes </a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="data-table" id="my-orders-table">
+                                        <thead>
+                                            <tr class="first last">
+                                                <th>Orden</th>
+                                                <th>Fecha</th>
+                                                <th><span class="nobr">Total</span></th>
+                                                <th colspan="2">Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="first odd">
+                                                <td><a href="" title="Ver Orden">500000002</a></td>
+                                                <td>9/9/10 </td>
+                                                <td><span class="price">₡2000</span></td>
+                                                <td colspan="2"><span class="label label-theme label-primary">Abierta en espera de pago</span></td>
+                                            </tr>
+                                            <tr class="last even">
+                                                <td><a href="" title="Ver Orden">500000001</a></td>
+                                                <td>9/9/10 </td>
+                                                <td><span class="price">₡3000</span></td>
+                                                <td colspan="2"><span class="label label-theme label-success">Entregada</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <aside class="col-right sidebar col-sm-3 wow">
+                <div class="block block-account">
+                    <div class="block-title">Mi Cuenta</div>
+                    <div class="block-content">
+                        <ul>
+                            <li class="current"><a>Panel de inicio</a></li>
+                            <li><a href="@Url.Action("Perfil", "Dashboard", new { Area = "Etiketas" })">Mi perfil</a></li>
+                            <li><a href="">Mis ordenes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>

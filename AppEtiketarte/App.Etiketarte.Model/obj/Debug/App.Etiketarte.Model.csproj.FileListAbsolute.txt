@@ -1,0 +1,5 @@
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Model\bin\Debug\App.Etiketarte.Model.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Model\bin\Debug\App.Etiketarte.Model.pdb
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Model\obj\Debug\App.Etiketarte.Model.csprojResolveAssemblyReference.cache
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Model\obj\Debug\App.Etiketarte.Model.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Model\obj\Debug\App.Etiketarte.Model.pdb

@@ -1,0 +1,244 @@
+﻿@section styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Style/Etiketas/previsualizacion.css")" />
+}
+
+<section class="main">
+    <div class="container orden-etiquetas" id="app">
+        <div class="row prevista-wrapper">
+            <div class="col-lg-1 col-md-12 col-xs-12" id="controles">
+                <ul class="controles__lista">
+                    <li id="control-formas" class="controles__elemento control-activo" v-on:click="muestraFormas()">
+                        <a>
+                            <i class="fa fa-star-o fa-3x" aria-hidden="true"></i>
+                            <br>Formas
+                        </a>
+                    </li>
+                    <li id="control-disennos" class="controles__elemento" v-on:click="muestraDisennos()">
+                        <a>
+                            <i class="fa fa-image fa-3x" aria-hidden="true"></i>
+                            <br>Diseños
+                        </a>
+                    </li>
+                    <li id="control-texto" class="controles__elemento" v-on:click="muestraTexto()">
+                        <a>
+                            <i class="fa fa-font fa-3x" aria-hidden="true"></i>
+                            <br>Texto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-7 col-md-12 col-xs-12" id="opciones">
+                <template v-if="veDisennos">
+                    <div class="opciones__disenos">
+                        <ul>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="001" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/741104.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="002" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/4261085.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="003" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/311034.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="004" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/121012.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="005" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/5631138.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="006" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/5571132.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="007" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/5601135.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="008" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/5651140.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="009" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/5671142.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="010" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/5721147.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="011" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/4421042.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="012" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/271028.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="013" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/181018.png")">
+                            </li>
+                            <li>
+                                <img v-on:click="establecerIdImagen($event), establecerRutaImg()" id="014" class="disennos" src="@Url.Content("http://etiketarte.net/img/disenos/251025.png")">
+                            </li>
+                        </ul>
+                    </div>
+                </template>
+
+                <template v-if="veFormas">
+                    <div class="opciones__formas">
+                        <div class="forma-cuadro" v-on:click="estableceForma('cuadrado')"></div>
+                    </div>
+                </template>
+
+                <template v-if="veTexto">
+                    <div class="opciones__texto">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="">Texto de prueba</label>
+                                <input v-model="texto" type="text" class="form-control" id="prueba" placeholder="Escriba el texto">
+                                <div v-if="sobrepasaCadena()" class="alert alert-danger" role="alert">
+                                    Debes ingresar 10 caracteres como máximo
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="fuentes">Tipo de fuente</label>
+                                        <select v-model="fuente" class="form-control" id="fuentes">
+                                            <option class="font-lobster">Lobster</option>
+                                            <option class="font-lemonada">Lemonada</option>
+                                            <option class="font-shadow">Shadows into light</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="fuentes">Color de fuente</label>
+                                        <div class="colores">
+                                            <div v-on:click="estableceColor($event)" class="show-color" style="background-color: #f4ee41"></div>
+                                            <div v-on:click="estableceColor($event)" class="show-color" style="background-color: #f48241"></div>
+                                            <div v-on:click="estableceColor($event)" class="show-color" style="background-color: #41f46a"></div>
+                                            <div v-on:click="estableceColor($event)" class="show-color" style="background-color: #b841f4"></div>
+                                            <div v-on:click="estableceColor($event)" class="show-color" style="background-color: #f44161"></div>
+                                            <div v-on:click="estableceColor($event)" class="show-color" style="background-color: #ffffff"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <template v-if="(hayTexto() && hayFuente()) && (hayForma() && hayDisenno())">
+                                        <button v-on:click.prevent="veResultadoMobile()" class="btn btn-success btn-hidden-pc">Ver Etiqueta</button>
+                                    </template>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </template>
+            </div>
+
+            <!-- PREVISTA PC -->
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" id="prevista">
+                <div class="prevista__container">
+
+                    <template v-if="!hayDisenno()">
+                        <h1>Vista Previa...</h1>
+                    </template>
+
+                    <template v-if="hayForma() && !hayDisenno()">
+                        <div class="prevista__continuar">
+                            <button class="btn__seguir">Selecciona el diseño <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </template>
+
+                    <template v-if="rutaImg">
+                        <div class="prevista__imagen">
+                            <img src="obtenerRutaImg()">
+                            <div class="prevista__texto">
+                                <p v-if="!sobrepasaCadena()" style="{ color: colorFuente }" class="clasesTexto">{{texto}}</p>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template v-if="hayForma() && hayDisenno() && !hayTexto()">
+                        <div class="prevista__continuar">
+                            <button class="btn__seguir">Selecciona el texto <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </template>
+
+                    <template v-if="seleccionCompleta()">
+                        <div class="pedido">
+                            <h2 class="pedido__titulo">Hacer pedido</h2>
+                            <div class="pedido__controles">
+                                <div class="pedido__detalles">
+                                    <div class="col-3 pedido__cantidad">
+                                        <span>Cantidad</span>
+                                        <input class="form-control" type="number" v-model="cantidad" id="cantidad-etiquetas">
+                                    </div>
+                                    <div class="col-3 pedido__costo">
+                                        <span>Precio</span>
+                                        <h3 class="pedido__costo">{{precioPedido}}</h3>
+                                    </div>
+                                </div>
+                                <button v-on:click="imprimeDatos()" class="pedido__agregar">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </template>
+
+                </div>
+            </div>
+
+            <!-- PREVISTA MOBILE -->
+            <template v-if="resultadoMobile">
+                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12" id="prevista-mobile">
+                    <div class="prevista__container">
+
+                        <template v-if="rutaImg">
+                            <div class="prevista__imagen">
+                                <img src="obtenerRutaImg()">
+                                <div class="prevista__texto">
+                                    <p v-if="!sobrepasaCadena()" class="clasesTexto">{{texto}}</p>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="(hayTexto() && hayFuente()) && (hayForma() && hayDisenno())">
+                            <div class="pedido">
+                                <h2 class="pedido__titulo">Hacer pedido</h2>
+                                <div class="pedido__controles">
+                                    <div class="col-3 pedido__cantidad">
+                                        <span>Cantidad</span>
+                                        <input class="form-control pedido__cantidad" type="number" v-model="cantidad" id="cantidad-etiquetas">
+                                    </div>
+                                    <div class="col-3 pedido__costo">
+                                        <span>Precio</span>
+                                        <h3 class="pedido__costo">{{precioPedido}}</h3>
+                                    </div>
+                                    <button v-on:click="imprimeDatos()" class="pedido__agregar">Agregar al carrito</button>
+                                </div>
+                            </div>
+                            <div class="pedido-mobile">
+                                <h2 class="pedido__titulo">Hacer pedido</h2>
+                                <div class="pedido__controles">
+                                    <div class="col-3 pedido__cantidad">
+                                        <span>Cantidad</span>
+                                        <input class="form-control pedido__cantidad" type="number" v-model="cantidad" id="cantidad-etiquetas">
+                                    </div>
+                                    <div class="col-3 pedido__costo">
+                                        <span>Precio</span>
+                                        <h3 class="pedido__costo">{{precioPedido}}</h3>
+                                    </div>
+                                    <button v-on:click="imprimeDatos()" class="pedido__agregar">Agregar al carrito</button>
+                                    <a v-bind:href="irAtras">Volver atrás</a>
+                                </div>
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+            </template>
+
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="~/Scripts/Etiketas/vue/prev_etiquetas.js"></script>
+}

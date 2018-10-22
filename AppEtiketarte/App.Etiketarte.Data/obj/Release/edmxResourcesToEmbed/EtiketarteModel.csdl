@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EtiketarteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EtiketarteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Artes" EntityType="EtiketarteModel.Arte" />
+    <EntitySet Name="ArteFormas" EntityType="EtiketarteModel.ArteForma" />
+    <EntitySet Name="ArteSplits" EntityType="EtiketarteModel.ArteSplit" />
+    <EntitySet Name="CANTON_CR" EntityType="EtiketarteModel.CANTON_CR" />
+    <EntitySet Name="Colors" EntityType="EtiketarteModel.Color" />
+    <EntitySet Name="ConfEtiketas" EntityType="EtiketarteModel.ConfEtiketa" />
+    <EntitySet Name="DetalleColors" EntityType="EtiketarteModel.DetalleColor" />
+    <EntitySet Name="DetalleOrdens" EntityType="EtiketarteModel.DetalleOrden" />
+    <EntitySet Name="DetalleTipografias" EntityType="EtiketarteModel.DetalleTipografia" />
+    <EntitySet Name="DISTRITO_CR" EntityType="EtiketarteModel.DISTRITO_CR" />
+    <EntitySet Name="Etiketas" EntityType="EtiketarteModel.Etiketa" />
+    <EntitySet Name="Formas" EntityType="EtiketarteModel.Forma" />
+    <EntitySet Name="FormaEnvios" EntityType="EtiketarteModel.FormaEnvio" />
+    <EntitySet Name="FormaPagoes" EntityType="EtiketarteModel.FormaPago" />
+    <EntitySet Name="FormaSplits" EntityType="EtiketarteModel.FormaSplit" />
+    <EntitySet Name="Logoes" EntityType="EtiketarteModel.Logo" />
+    <EntitySet Name="LogoEtiketas" EntityType="EtiketarteModel.LogoEtiketa" />
+    <EntitySet Name="LogoSplits" EntityType="EtiketarteModel.LogoSplit" />
+    <EntitySet Name="Ordens" EntityType="EtiketarteModel.Orden" />
+    <EntitySet Name="Perfils" EntityType="EtiketarteModel.Perfil" />
+    <EntitySet Name="Productoes" EntityType="EtiketarteModel.Producto" />
+    <EntitySet Name="PROVINCIA_CR" EntityType="EtiketarteModel.PROVINCIA_CR" />
+    <EntitySet Name="Tipografias" EntityType="EtiketarteModel.Tipografia" />
+    <EntitySet Name="Usuarios" EntityType="EtiketarteModel.Usuario" />
+    <AssociationSet Name="FK_Arte" Association="EtiketarteModel.FK_Arte">
+      <End Role="Arte" EntitySet="Artes" />
+      <End Role="ArteForma" EntitySet="ArteFormas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArteToSplit" Association="EtiketarteModel.FK_ArteToSplit">
+      <End Role="Arte" EntitySet="Artes" />
+      <End Role="ArteSplit" EntitySet="ArteSplits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArteForma" Association="EtiketarteModel.FK_ArteForma">
+      <End Role="ArteForma" EntitySet="ArteFormas" />
+      <End Role="DetalleColor" EntitySet="DetalleColors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArteFormaDetalle" Association="EtiketarteModel.FK_ArteFormaDetalle">
+      <End Role="ArteForma" EntitySet="ArteFormas" />
+      <End Role="DetalleTipografia" EntitySet="DetalleTipografias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConfEtiketa" Association="EtiketarteModel.FK_ConfEtiketa">
+      <End Role="ConfEtiketa" EntitySet="ConfEtiketas" />
+      <End Role="ArteForma" EntitySet="ArteFormas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormaDetalle" Association="EtiketarteModel.FK_FormaDetalle">
+      <End Role="Forma" EntitySet="Formas" />
+      <End Role="ArteForma" EntitySet="ArteFormas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CANTON_CR" Association="EtiketarteModel.FK_CANTON_CR">
+      <End Role="CANTON_CR" EntitySet="CANTON_CR" />
+      <End Role="Orden" EntitySet="Ordens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CANTON_PROVINCIA" Association="EtiketarteModel.FK_CANTON_PROVINCIA">
+      <End Role="PROVINCIA_CR" EntitySet="PROVINCIA_CR" />
+      <End Role="CANTON_CR" EntitySet="CANTON_CR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISTRITO_CANTON" Association="EtiketarteModel.FK_DISTRITO_CANTON">
+      <End Role="CANTON_CR" EntitySet="CANTON_CR" />
+      <End Role="DISTRITO_CR" EntitySet="DISTRITO_CR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ColorDetalle" Association="EtiketarteModel.FK_ColorDetalle">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="DetalleColor" EntitySet="DetalleColors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EtiketaConf" Association="EtiketarteModel.FK_EtiketaConf">
+      <End Role="Etiketa" EntitySet="Etiketas" />
+      <End Role="ConfEtiketa" EntitySet="ConfEtiketas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden" Association="EtiketarteModel.FK_Orden">
+      <End Role="Orden" EntitySet="Ordens" />
+      <End Role="DetalleOrden" EntitySet="DetalleOrdens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipografiaDetalle" Association="EtiketarteModel.FK_TipografiaDetalle">
+      <End Role="Tipografia" EntitySet="Tipografias" />
+      <End Role="DetalleTipografia" EntitySet="DetalleTipografias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISTRITO_CR" Association="EtiketarteModel.FK_DISTRITO_CR">
+      <End Role="DISTRITO_CR" EntitySet="DISTRITO_CR" />
+      <End Role="Orden" EntitySet="Ordens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Etiketa" Association="EtiketarteModel.FK_Etiketa">
+      <End Role="Etiketa" EntitySet="Etiketas" />
+      <End Role="LogoEtiketa" EntitySet="LogoEtiketas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto" Association="EtiketarteModel.FK_Producto">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="Etiketa" EntitySet="Etiketas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormaToSplit" Association="EtiketarteModel.FK_FormaToSplit">
+      <End Role="Forma" EntitySet="Formas" />
+      <End Role="FormaSplit" EntitySet="FormaSplits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormaEnvio" Association="EtiketarteModel.FK_FormaEnvio">
+      <End Role="FormaEnvio" EntitySet="FormaEnvios" />
+      <End Role="Orden" EntitySet="Ordens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormaPago" Association="EtiketarteModel.FK_FormaPago">
+      <End Role="FormaPago" EntitySet="FormaPagoes" />
+      <End Role="Orden" EntitySet="Ordens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logo" Association="EtiketarteModel.FK_Logo">
+      <End Role="Logo" EntitySet="Logoes" />
+      <End Role="LogoEtiketa" EntitySet="LogoEtiketas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogoToSplit" Association="EtiketarteModel.FK_LogoToSplit">
+      <End Role="Logo" EntitySet="Logoes" />
+      <End Role="LogoSplit" EntitySet="LogoSplits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROVINCIA_CR" Association="EtiketarteModel.FK_PROVINCIA_CR">
+      <End Role="PROVINCIA_CR" EntitySet="PROVINCIA_CR" />
+      <End Role="Orden" EntitySet="Ordens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios" Association="EtiketarteModel.FK_Usuarios">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Orden" EntitySet="Ordens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Perfil" Association="EtiketarteModel.FK_Perfil">
+      <End Role="Perfil" EntitySet="Perfils" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Arte">
+    <Key>
+      <PropertyRef Name="IdArte" />
+    </Key>
+    <Property Name="IdArte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ArteFormas" Relationship="EtiketarteModel.FK_Arte" FromRole="Arte" ToRole="ArteForma" />
+    <NavigationProperty Name="ArteSplits" Relationship="EtiketarteModel.FK_ArteToSplit" FromRole="Arte" ToRole="ArteSplit" />
+  </EntityType>
+  <EntityType Name="ArteForma">
+    <Key>
+      <PropertyRef Name="IdArteForma" />
+    </Key>
+    <Property Name="IdArteForma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdConfEtiketa" Type="Int32" Nullable="false" />
+    <Property Name="IdArte" Type="Int32" Nullable="false" />
+    <Property Name="IdForma" Type="Int32" Nullable="false" />
+    <Property Name="TextTop" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TextLeft" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TextAlign" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroLineas" Type="Int32" Nullable="false" />
+    <Property Name="CaracteresLinea" Type="Int32" Nullable="false" />
+    <Property Name="FontMinSize" Type="Int32" Nullable="false" />
+    <Property Name="FontMaxSize" Type="Int32" Nullable="false" />
+    <Property Name="ContainerWidth" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Arte" Relationship="EtiketarteModel.FK_Arte" FromRole="ArteForma" ToRole="Arte" />
+    <NavigationProperty Name="DetalleColors" Relationship="EtiketarteModel.FK_ArteForma" FromRole="ArteForma" ToRole="DetalleColor" />
+    <NavigationProperty Name="DetalleTipografias" Relationship="EtiketarteModel.FK_ArteFormaDetalle" FromRole="ArteForma" ToRole="DetalleTipografia" />
+    <NavigationProperty Name="ConfEtiketa" Relationship="EtiketarteModel.FK_ConfEtiketa" FromRole="ArteForma" ToRole="ConfEtiketa" />
+    <NavigationProperty Name="Forma" Relationship="EtiketarteModel.FK_FormaDetalle" FromRole="ArteForma" ToRole="Forma" />
+  </EntityType>
+  <EntityType Name="ArteSplit">
+    <Key>
+      <PropertyRef Name="IdArteSplit" />
+    </Key>
+    <Property Name="IdArteSplit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdArte" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Arte" Relationship="EtiketarteModel.FK_ArteToSplit" FromRole="ArteSplit" ToRole="Arte" />
+  </EntityType>
+  <EntityType Name="CANTON_CR">
+    <Key>
+      <PropertyRef Name="codigo_canton" />
+    </Key>
+    <Property Name="codigo_canton" Type="Int16" Nullable="false" />
+    <Property Name="codigo_provincia" Type="Int16" Nullable="false" />
+    <Property Name="nombre_canton" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ordens" Relationship="EtiketarteModel.FK_CANTON_CR" FromRole="CANTON_CR" ToRole="Orden" />
+    <NavigationProperty Name="PROVINCIA_CR" Relationship="EtiketarteModel.FK_CANTON_PROVINCIA" FromRole="CANTON_CR" ToRole="PROVINCIA_CR" />
+    <NavigationProperty Name="DISTRITO_CR" Relationship="EtiketarteModel.FK_DISTRITO_CANTON" FromRole="CANTON_CR" ToRole="DISTRITO_CR" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="IdColor" />
+    </Key>
+    <Property Name="IdColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Hexadecimal" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="DetalleColors" Relationship="EtiketarteModel.FK_ColorDetalle" FromRole="Color" ToRole="DetalleColor" />
+  </EntityType>
+  <EntityType Name="ConfEtiketa">
+    <Key>
+      <PropertyRef Name="IdConfEtiketa" />
+    </Key>
+    <Property Name="IdConfEtiketa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEtiketa" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ArteFormas" Relationship="EtiketarteModel.FK_ConfEtiketa" FromRole="ConfEtiketa" ToRole="ArteForma" />
+    <NavigationProperty Name="Etiketa" Relationship="EtiketarteModel.FK_EtiketaConf" FromRole="ConfEtiketa" ToRole="Etiketa" />
+  </EntityType>
+  <EntityType Name="DetalleColor">
+    <Key>
+      <PropertyRef Name="IdDetalleColor" />
+    </Key>
+    <Property Name="IdDetalleColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdColor" Type="Int32" Nullable="false" />
+    <Property Name="IdArteForma" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ArteForma" Relationship="EtiketarteModel.FK_ArteForma" FromRole="DetalleColor" ToRole="ArteForma" />
+    <NavigationProperty Name="Color" Relationship="EtiketarteModel.FK_ColorDetalle" FromRole="DetalleColor" ToRole="Color" />
+  </EntityType>
+  <EntityType Name="DetalleOrden">
+    <Key>
+      <PropertyRef Name="IdDetalleOrden" />
+    </Key>
+    <Property Name="IdDetalleOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOrden" Type="Int32" Nullable="false" />
+    <Property Name="CodigoProducto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroLineas" Type="Int32" />
+    <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Orden" Relationship="EtiketarteModel.FK_Orden" FromRole="DetalleOrden" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="DetalleTipografia">
+    <Key>
+      <PropertyRef Name="IdDetalleTipografia" />
+    </Key>
+    <Property Name="IdDetalleTipografia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTipografia" Type="Int32" Nullable="false" />
+    <Property Name="IdArteForma" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ArteForma" Relationship="EtiketarteModel.FK_ArteFormaDetalle" FromRole="DetalleTipografia" ToRole="ArteForma" />
+    <NavigationProperty Name="Tipografia" Relationship="EtiketarteModel.FK_TipografiaDetalle" FromRole="DetalleTipografia" ToRole="Tipografia" />
+  </EntityType>
+  <EntityType Name="DISTRITO_CR">
+    <Key>
+      <PropertyRef Name="codigo_distrito" />
+    </Key>
+    <Property Name="codigo_distrito" Type="Int32" Nullable="false" />
+    <Property Name="codigo_canton" Type="Int16" Nullable="false" />
+    <Property Name="nombre_distrito" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CANTON_CR" Relationship="EtiketarteModel.FK_DISTRITO_CANTON" FromRole="DISTRITO_CR" ToRole="CANTON_CR" />
+    <NavigationProperty Name="Ordens" Relationship="EtiketarteModel.FK_DISTRITO_CR" FromRole="DISTRITO_CR" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="Etiketa">
+    <Key>
+      <PropertyRef Name="IdEtiketa" />
+    </Key>
+    <Property Name="IdEtiketa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProducto" Type="Int32" Nullable="false" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ConfEtiketas" Relationship="EtiketarteModel.FK_EtiketaConf" FromRole="Etiketa" ToRole="ConfEtiketa" />
+    <NavigationProperty Name="LogoEtiketas" Relationship="EtiketarteModel.FK_Etiketa" FromRole="Etiketa" ToRole="LogoEtiketa" />
+    <NavigationProperty Name="Producto" Relationship="EtiketarteModel.FK_Producto" FromRole="Etiketa" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Forma">
+    <Key>
+      <PropertyRef Name="IdForma" />
+    </Key>
+    <Property Name="IdForma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ArteFormas" Relationship="EtiketarteModel.FK_FormaDetalle" FromRole="Forma" ToRole="ArteForma" />
+    <NavigationProperty Name="FormaSplits" Relationship="EtiketarteModel.FK_FormaToSplit" FromRole="Forma" ToRole="FormaSplit" />
+  </EntityType>
+  <EntityType Name="FormaEnvio">
+    <Key>
+      <PropertyRef Name="IdFormaEnvio" />
+    </Key>
+    <Property Name="IdFormaEnvio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="Int16" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Ordens" Relationship="EtiketarteModel.FK_FormaEnvio" FromRole="FormaEnvio" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="FormaPago">
+    <Key>
+      <PropertyRef Name="IdFormaPago" />
+    </Key>
+    <Property Name="IdFormaPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="Int16" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Ordens" Relationship="EtiketarteModel.FK_FormaPago" FromRole="FormaPago" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="FormaSplit">
+    <Key>
+      <PropertyRef Name="IdFormaSplit" />
+    </Key>
+    <Property Name="IdFormaSplit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdForma" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Forma" Relationship="EtiketarteModel.FK_FormaToSplit" FromRole="FormaSplit" ToRole="Forma" />
+  </EntityType>
+  <EntityType Name="Logo">
+    <Key>
+      <PropertyRef Name="IdLogo" />
+    </Key>
+    <Property Name="IdLogo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="LogoEtiketas" Relationship="EtiketarteModel.FK_Logo" FromRole="Logo" ToRole="LogoEtiketa" />
+    <NavigationProperty Name="LogoSplits" Relationship="EtiketarteModel.FK_LogoToSplit" FromRole="Logo" ToRole="LogoSplit" />
+  </EntityType>
+  <EntityType Name="LogoEtiketa">
+    <Key>
+      <PropertyRef Name="IdLogoEtiketa" />
+    </Key>
+    <Property Name="IdLogoEtiketa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEtiketa" Type="Int32" Nullable="false" />
+    <Property Name="IdLogo" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Etiketa" Relationship="EtiketarteModel.FK_Etiketa" FromRole="LogoEtiketa" ToRole="Etiketa" />
+    <NavigationProperty Name="Logo" Relationship="EtiketarteModel.FK_Logo" FromRole="LogoEtiketa" ToRole="Logo" />
+  </EntityType>
+  <EntityType Name="LogoSplit">
+    <Key>
+      <PropertyRef Name="IdLogoSplit" />
+    </Key>
+    <Property Name="IdLogoSplit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdLogo" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Logo" Relationship="EtiketarteModel.FK_LogoToSplit" FromRole="LogoSplit" ToRole="Logo" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="IdOrden" />
+    </Key>
+    <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdFormaEnvio" Type="Int32" Nullable="false" />
+    <Property Name="IdFormaPago" Type="Int32" Nullable="false" />
+    <Property Name="codigoOrden" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="codigo_provincia" Type="Int16" Nullable="false" />
+    <Property Name="codigo_canton" Type="Int16" Nullable="false" />
+    <Property Name="codigo_distrito" Type="Int32" Nullable="false" />
+    <Property Name="CodigoPostal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionEnvio" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NombreContacto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoContacto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoContacto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PrecioTotal" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="TrackingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrackingImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FechaOrden" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaPago" Type="DateTime" Precision="3" />
+    <Property Name="FechaEnvio" Type="DateTime" Precision="3" />
+    <Property Name="FechaEntrega" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CANTON_CR" Relationship="EtiketarteModel.FK_CANTON_CR" FromRole="Orden" ToRole="CANTON_CR" />
+    <NavigationProperty Name="DetalleOrdens" Relationship="EtiketarteModel.FK_Orden" FromRole="Orden" ToRole="DetalleOrden" />
+    <NavigationProperty Name="DISTRITO_CR" Relationship="EtiketarteModel.FK_DISTRITO_CR" FromRole="Orden" ToRole="DISTRITO_CR" />
+    <NavigationProperty Name="FormaEnvio" Relationship="EtiketarteModel.FK_FormaEnvio" FromRole="Orden" ToRole="FormaEnvio" />
+    <NavigationProperty Name="FormaPago" Relationship="EtiketarteModel.FK_FormaPago" FromRole="Orden" ToRole="FormaPago" />
+    <NavigationProperty Name="PROVINCIA_CR" Relationship="EtiketarteModel.FK_PROVINCIA_CR" FromRole="Orden" ToRole="PROVINCIA_CR" />
+    <NavigationProperty Name="Usuario" Relationship="EtiketarteModel.FK_Usuarios" FromRole="Orden" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Perfil">
+    <Key>
+      <PropertyRef Name="IdPerfil" />
+    </Key>
+    <Property Name="IdPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Usuarios" Relationship="EtiketarteModel.FK_Perfil" FromRole="Perfil" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Etiketas" Relationship="EtiketarteModel.FK_Producto" FromRole="Producto" ToRole="Etiketa" />
+  </EntityType>
+  <EntityType Name="PROVINCIA_CR">
+    <Key>
+      <PropertyRef Name="codigo_provincia" />
+    </Key>
+    <Property Name="codigo_provincia" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_provincia" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CANTON_CR" Relationship="EtiketarteModel.FK_CANTON_PROVINCIA" FromRole="PROVINCIA_CR" ToRole="CANTON_CR" />
+    <NavigationProperty Name="Ordens" Relationship="EtiketarteModel.FK_PROVINCIA_CR" FromRole="PROVINCIA_CR" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="Tipografia">
+    <Key>
+      <PropertyRef Name="IdTipoGrafia" />
+    </Key>
+    <Property Name="IdTipoGrafia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="DetalleTipografias" Relationship="EtiketarteModel.FK_TipografiaDetalle" FromRole="Tipografia" ToRole="DetalleTipografia" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPerfil" Type="Int32" Nullable="false" />
+    <Property Name="FacebookId" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="FacebookEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EmailEnvio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Ordens" Relationship="EtiketarteModel.FK_Usuarios" FromRole="Usuario" ToRole="Orden" />
+    <NavigationProperty Name="Perfil" Relationship="EtiketarteModel.FK_Perfil" FromRole="Usuario" ToRole="Perfil" />
+  </EntityType>
+  <Association Name="FK_Arte">
+    <End Type="EtiketarteModel.Arte" Role="Arte" Multiplicity="1" />
+    <End Type="EtiketarteModel.ArteForma" Role="ArteForma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arte">
+        <PropertyRef Name="IdArte" />
+      </Principal>
+      <Dependent Role="ArteForma">
+        <PropertyRef Name="IdArte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArteToSplit">
+    <End Type="EtiketarteModel.Arte" Role="Arte" Multiplicity="1" />
+    <End Type="EtiketarteModel.ArteSplit" Role="ArteSplit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arte">
+        <PropertyRef Name="IdArte" />
+      </Principal>
+      <Dependent Role="ArteSplit">
+        <PropertyRef Name="IdArte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArteForma">
+    <End Type="EtiketarteModel.ArteForma" Role="ArteForma" Multiplicity="1" />
+    <End Type="EtiketarteModel.DetalleColor" Role="DetalleColor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArteForma">
+        <PropertyRef Name="IdArteForma" />
+      </Principal>
+      <Dependent Role="DetalleColor">
+        <PropertyRef Name="IdArteForma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArteFormaDetalle">
+    <End Type="EtiketarteModel.ArteForma" Role="ArteForma" Multiplicity="1" />
+    <End Type="EtiketarteModel.DetalleTipografia" Role="DetalleTipografia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArteForma">
+        <PropertyRef Name="IdArteForma" />
+      </Principal>
+      <Dependent Role="DetalleTipografia">
+        <PropertyRef Name="IdArteForma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConfEtiketa">
+    <End Type="EtiketarteModel.ConfEtiketa" Role="ConfEtiketa" Multiplicity="1" />
+    <End Type="EtiketarteModel.ArteForma" Role="ArteForma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfEtiketa">
+        <PropertyRef Name="IdConfEtiketa" />
+      </Principal>
+      <Dependent Role="ArteForma">
+        <PropertyRef Name="IdConfEtiketa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormaDetalle">
+    <End Type="EtiketarteModel.Forma" Role="Forma" Multiplicity="1" />
+    <End Type="EtiketarteModel.ArteForma" Role="ArteForma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Forma">
+        <PropertyRef Name="IdForma" />
+      </Principal>
+      <Dependent Role="ArteForma">
+        <PropertyRef Name="IdForma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CANTON_CR">
+    <End Type="EtiketarteModel.CANTON_CR" Role="CANTON_CR" Multiplicity="1" />
+    <End Type="EtiketarteModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANTON_CR">
+        <PropertyRef Name="codigo_canton" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="codigo_canton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CANTON_PROVINCIA">
+    <End Type="EtiketarteModel.PROVINCIA_CR" Role="PROVINCIA_CR" Multiplicity="1" />
+    <End Type="EtiketarteModel.CANTON_CR" Role="CANTON_CR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA_CR">
+        <PropertyRef Name="codigo_provincia" />
+      </Principal>
+      <Dependent Role="CANTON_CR">
+        <PropertyRef Name="codigo_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISTRITO_CANTON">
+    <End Type="EtiketarteModel.CANTON_CR" Role="CANTON_CR" Multiplicity="1" />
+    <End Type="EtiketarteModel.DISTRITO_CR" Role="DISTRITO_CR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANTON_CR">
+        <PropertyRef Name="codigo_canton" />
+      </Principal>
+      <Dependent Role="DISTRITO_CR">
+        <PropertyRef Name="codigo_canton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ColorDetalle">
+    <End Type="EtiketarteModel.Color" Role="Color" Multiplicity="1" />
+    <End Type="EtiketarteModel.DetalleColor" Role="DetalleColor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="IdColor" />
+      </Principal>
+      <Dependent Role="DetalleColor">
+        <PropertyRef Name="IdColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EtiketaConf">
+    <End Type="EtiketarteModel.Etiketa" Role="Etiketa" Multiplicity="1" />
+    <End Type="EtiketarteModel.ConfEtiketa" Role="ConfEtiketa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etiketa">
+        <PropertyRef Name="IdEtiketa" />
+      </Principal>
+      <Dependent Role="ConfEtiketa">
+        <PropertyRef Name="IdEtiketa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden">
+    <End Type="EtiketarteModel.Orden" Role="Orden" Multiplicity="1" />
+    <End Type="EtiketarteModel.DetalleOrden" Role="DetalleOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden">
+        <PropertyRef Name="IdOrden" />
+      </Principal>
+      <Dependent Role="DetalleOrden">
+        <PropertyRef Name="IdOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipografiaDetalle">
+    <End Type="EtiketarteModel.Tipografia" Role="Tipografia" Multiplicity="1" />
+    <End Type="EtiketarteModel.DetalleTipografia" Role="DetalleTipografia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipografia">
+        <PropertyRef Name="IdTipoGrafia" />
+      </Principal>
+      <Dependent Role="DetalleTipografia">
+        <PropertyRef Name="IdTipografia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISTRITO_CR">
+    <End Type="EtiketarteModel.DISTRITO_CR" Role="DISTRITO_CR" Multiplicity="1" />
+    <End Type="EtiketarteModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO_CR">
+        <PropertyRef Name="codigo_distrito" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="codigo_distrito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Etiketa">
+    <End Type="EtiketarteModel.Etiketa" Role="Etiketa" Multiplicity="1" />
+    <End Type="EtiketarteModel.LogoEtiketa" Role="LogoEtiketa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etiketa">
+        <PropertyRef Name="IdEtiketa" />
+      </Principal>
+      <Dependent Role="LogoEtiketa">
+        <PropertyRef Name="IdEtiketa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto">
+    <End Type="EtiketarteModel.Producto" Role="Producto" Multiplicity="1" />
+    <End Type="EtiketarteModel.Etiketa" Role="Etiketa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="Etiketa">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormaToSplit">
+    <End Type="EtiketarteModel.Forma" Role="Forma" Multiplicity="1" />
+    <End Type="EtiketarteModel.FormaSplit" Role="FormaSplit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Forma">
+        <PropertyRef Name="IdForma" />
+      </Principal>
+      <Dependent Role="FormaSplit">
+        <PropertyRef Name="IdForma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormaEnvio">
+    <End Type="EtiketarteModel.FormaEnvio" Role="FormaEnvio" Multiplicity="1" />
+    <End Type="EtiketarteModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormaEnvio">
+        <PropertyRef Name="IdFormaEnvio" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="IdFormaEnvio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormaPago">
+    <End Type="EtiketarteModel.FormaPago" Role="FormaPago" Multiplicity="1" />
+    <End Type="EtiketarteModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormaPago">
+        <PropertyRef Name="IdFormaPago" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="IdFormaPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logo">
+    <End Type="EtiketarteModel.Logo" Role="Logo" Multiplicity="1" />
+    <End Type="EtiketarteModel.LogoEtiketa" Role="LogoEtiketa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logo">
+        <PropertyRef Name="IdLogo" />
+      </Principal>
+      <Dependent Role="LogoEtiketa">
+        <PropertyRef Name="IdLogo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogoToSplit">
+    <End Type="EtiketarteModel.Logo" Role="Logo" Multiplicity="1" />
+    <End Type="EtiketarteModel.LogoSplit" Role="LogoSplit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logo">
+        <PropertyRef Name="IdLogo" />
+      </Principal>
+      <Dependent Role="LogoSplit">
+        <PropertyRef Name="IdLogo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROVINCIA_CR">
+    <End Type="EtiketarteModel.PROVINCIA_CR" Role="PROVINCIA_CR" Multiplicity="1" />
+    <End Type="EtiketarteModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA_CR">
+        <PropertyRef Name="codigo_provincia" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="codigo_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios">
+    <End Type="EtiketarteModel.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="EtiketarteModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Perfil">
+    <End Type="EtiketarteModel.Perfil" Role="Perfil" Multiplicity="1" />
+    <End Type="EtiketarteModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

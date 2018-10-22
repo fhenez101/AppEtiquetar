@@ -1,0 +1,337 @@
+﻿@section styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Style/Etiketas/previsualizacion.css")" />
+
+    <style>
+        .opciones__formas .containerImage .fatherDiv div img {
+            max-width: 28px;
+            max-height: 28px;
+        }
+
+        .containerImage.arte {
+            cursor: pointer;
+        }
+    </style>
+}
+
+<section class="main previsualizador" id="ropa">
+    <div class="container orden-etiquetas" id="app">
+        <div class="row prevista-wrapper">
+            <div class="col-lg-1 col-md-12 col-xs-12" id="controles">
+                <ul class="controles__lista">
+                    <li id="control-formas" class="controles__elemento control-activo" data-div="opciones__formas">
+                        <a>
+                            <i class="fa fa-star-o fa-3x" aria-hidden="true"></i>
+                            <br>Formas
+                        </a>
+                    </li>
+                    <li id="control-disenos" class="controles__elemento" data-div="opciones__disenos">
+                        <a>
+                            <i class="fa fa-image fa-3x" aria-hidden="true"></i>
+                            <br>Diseños
+                        </a>
+                    </li>
+                    <li id="control-texto" class="controles__elemento" data-div="opciones__texto">
+                        <a>
+                            <i class="fa fa-font fa-3x" aria-hidden="true"></i>
+                            <br>Texto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-7 col-md-12 col-xs-12" id="opciones">
+                <div class="opciones opciones__formas visible"></div>
+                <div class="opciones opciones__disenos invisible"></div>
+                <div class="opciones opciones__texto invisible">
+                    <form action="" class="orden-form">
+                        <div class="form-group">
+                            <h4>Texto para la etiketa</h4>
+                            <br />
+                            <div class="generic-input-text"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fuentes">Tipo de fuente</label>
+                                    <select class="form-control" id="fuentes"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="colores">Color de fuente</label>
+                                    <div id="colores" class="colores"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-success btn-hidden-pc">Ver Etiqueta</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" id="prevista">
+                <div class="prevista__container">
+                    <h1 class="prevista__titulo">Vista Previa...</h1>
+                    <div class="prevista__imagen">
+                        <div class="etiqueta-prev"></div>
+                        <div class="prevista__texto">
+                            <p id="texto-demo" class="clasesTexto"></p>
+                        </div>
+                    </div>
+                    <div class="pedido invisible">
+                        <h2 class="pedido__titulo">Hacer pedido</h2>
+                        <div class="pedido__controles">
+                            <div class="pedido__detalles">
+                                <div class="col-3 pedido__cantidad">
+                                    <span>Cantidad</span>
+                                    <input type="number" id="cantidad-etiquetas" class="form-control" min="1">
+                                </div>
+                                <div class="col-3 costo">
+                                    <span>Precio</span>
+                                    <h3 class="pedido__costo">₡0</h3>
+                                </div>
+                            </div>
+                            <button class="pedido__agregar">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    @* <script src="@Url.Content("~/Scripts/Etiketas/previewer.js")"></script>*@
+    <script>
+        var config = {
+            CaracteresLinea: 0,
+            ImageList: {}
+        };
+
+        $(function () {
+            preview.Init();
+
+            $('#control-formas').click(function () {
+                preview.ShowOptions($(this));
+            });
+
+            $('#control-disenos').click(function () {
+                preview.ShowOptions($(this));
+            });
+
+            $('#control-texto').click(function () {
+                preview.ShowOptions($(this));
+            });
+
+            //obtener diseños al seleccionar forma
+            $(document).on('click', '.forma', function () {
+                preview.ImageDecorate($(this), 'forma');
+                loadImg.GetArtes($(this).data('codigo'));
+                $('.prevista__titulo').hide();
+                preview.CloneImageDiv($(this));
+            });
+
+            //obtener configuracion al seleccionar diseño
+            $(document).on('click', '.arte', function () {
+                preview.ImageDecorate($(this), 'diseno');
+                loadImg.GetTipografiasColorsConfiguration($(this).data('codigo'));
+                $('.pedido').removeClass('invisible');
+                preview.CloneImageDiv($(this));
+            });
+
+            //obtener precio
+            $('#cantidad-etiquetas').click(function () {
+                //To Do
+            });
+
+            //Validar cantidad de caracteres
+            $(document).on('keyup', '.preiewText', function () {
+                console.log(config)
+
+                var errorDiv = $(this).next();
+
+                console.log(errorDiv)
+
+                if ($(this).val().length > config.CaracteresLinea) {
+                    errorDiv.html('Debes ingresar ' + config.CaracteresLinea + ' caracteres como máximo')
+                        .removeClass('hidden');
+                }
+                else {
+                    errorDiv.addClass('hidden');
+                }
+            });
+        });
+
+        var loadImg = {
+            isVisible: function ($element) {
+                var topView = $(window).scrollTop();
+                var botView = topView + $(window).height();
+                var topElement = $element.offset().top;
+                var botElement = topElement + $element.height();
+
+                return ((botElement <= botView) && (topElement >= topView));
+            },
+            lazyLoadImage: function () {
+                $('.flickr img.lazy').each(function () {
+                    if (loadImg.isVisible($(this).closest('.imgWrap'))) {
+                        $(this).one('load', function () {
+                            $(this).removeClass('lazy');
+                        }).attr('src', $(this).data('src')).removeAttr('data-src');
+                    }
+                });
+            },
+            getImageGallery: function () {
+                $.ajax({
+                    method: 'GET',
+                    url: 'https://api.flickr.com/services/feeds/photos_public.gne?tags=nature&tagmode=any&format=json&jsoncallback=?',
+                    data: {},
+                    dataType: 'json',
+                    success: function (data) {
+                        $(data.items).each(function (i, item) {
+                            config.ImageList += '<div class="col-md-4"><figure><div class="imgWrap"><img class="lazy" src="http://www.jquerycookbook.com/demos/S6-Images/images/ajax-loader_b.gif" data-src="' + item.media.m + '"/></div><figcaption>' + item.title + '</figcaption></figure></div>';
+                        });
+
+                        $('.flickr').append(config.ImageList);
+                        loadImg.lazyLoadImage();
+                    },
+                    error: function () {
+                        console.log('Error while loading images')
+                    }
+                });
+            },
+            GetFormas: function () {
+                var obj = loadImg.AjaxCall('@Url.Action("GetFormas", "Ordenar")', {});
+                var div = $(document.createElement('div'));
+
+                $.each(obj.LFormas, function (i, v) {
+                    div.append(loadImg.ShowImage(v.Img, v.ImageParts, v.Codigo).addClass('forma'));
+                });
+                $('.opciones.opciones__formas').show().append(div);
+            },
+            GetArtes: function (codigo) {
+                var obj = loadImg.AjaxCall('@Url.Action("GetArtes", "Ordenar")', { 'codigo': codigo });
+                var ul = $(document.createElement('ul'));
+
+                $.each(obj.LArtes, function (i, v) {
+                    var arte = loadImg.ShowImage(v.Img, v.ImageParts, v.Codigo).addClass('arte')
+                    ul.append($(document.createElement('li')).append(arte));
+                });
+
+                $('.opciones.opciones__disenos').empty().append(ul);
+            },
+            GetTipografiasColorsConfiguration: function (codigo) {
+                var url = '@Url.Action("GetTipografiasColorsConfiguration", "Ordenar")';
+                var obj = loadImg.AjaxCall(url, { 'codigo': codigo });
+
+                loadImg.ShowTipografias(obj.LTipografias);
+                loadImg.ShowColores(obj.LColores);
+                config.CaracteresLinea = obj.LCaracteresLinea;
+                $('.generic-input-text').empty();
+
+                for (var i = 0; i < obj.LNumeroLineas; i++) {
+                    $('.generic-input-text').append(loadImg.CreateInputs('nombre', 'milton' + i));
+                }
+            },
+            AjaxCall: function (url, data) {
+                var result = {};
+
+                $.ajax({
+                    method: 'GET',
+                    url: url,
+                    async: false,
+                    data: data,
+                    dataType: 'json',
+                    success: function (data) {
+                        result = data;
+                    },
+                    error: function () {
+                        console.log('Error while loading images')
+                    }
+                });
+
+                return result;
+            },
+            ShowImage: function (imageList, imageParts, codigo) {
+                var counter = 0;
+                var containerImage = $(document.createElement('div'))
+                    .addClass('containerImage').attr('data-codigo', codigo);
+
+                for (var i = 0; i < imageParts; i++) {
+                    var fatherDiv = $(document.createElement('div')).addClass('fatherDiv');
+
+                    for (var j = 0; j < imageParts; j++) {
+                        fatherDiv.append($(document.createElement('div'))
+                            .append($(document.createElement('img')).attr('src', imageList[counter++].Url)));
+                    }
+                    containerImage.append(fatherDiv);
+                }
+
+                return containerImage;
+            },
+            ShowTipografias: function (tipografias) {
+                $('.opciones.opciones__texto #fuentes').empty();
+
+                $.each(tipografias, function (i, v) {
+                    var opt = $(document.createElement('option'))
+                        .attr('value', v.Id).addClass('font-' + v.Nombre.toLowerCase()).html(v.Nombre);
+                    $('.opciones.opciones__texto #fuentes').append(opt);
+                });
+            },
+            ShowColores: function (colores) {
+                $('.opciones.opciones__texto .colores').empty();
+
+                $.each(colores, function (i, v) {
+                    var div = $(document.createElement('div'))
+                        .attr({ 'id': v.Id, 'style': 'background-color:' + v.Hexadecimal + '', 'title': v.Nombre })
+                        .addClass('show-color');
+                    $('.opciones.opciones__texto .colores').append(div);
+                });
+            },
+            CreateInputs: function (name, placeholder) {
+                var div = $(document.createElement('div')).attr('class', 'form-group');
+                var error = $(document.createElement('div')).attr({
+                    'class': 'alerta-texto alert alert-danger hidden',
+                    'role': 'alert'
+                });
+                var label = $(document.createElement('label')).attr({
+                    'for': name.toLowerCase(),
+                    'class': 'capitalize'
+                }).html(placeholder);
+                var input = $(document.createElement('input')).attr({
+                    'type': 'text',
+                    'id': name.toLowerCase(),
+                    'class': 'form-control preiewText',
+                    'data-name': name.toLowerCase(),
+                    'placeholder': placeholder
+                });
+                var validate = $(document.createElement('div')).attr({
+                    'class': 'alerta-texto alert alert-danger hidden',
+                    'role': 'alert'
+                });
+
+                return div.append(label).append(input).before().append(error);
+            }
+        };
+
+        var preview = {
+            Init: function () {
+                $('#opciones').children().hide();
+                loadImg.GetFormas();
+                $('#cantidad-etiquetas').val(1);
+            },
+            ImageDecorate: function (element, $class) {
+                $('.' + element.attr('class').split(' ').join('.')).removeClass($class + '-selected');
+                element.addClass($class + '-selected');
+            },
+            CloneImageDiv: function (element) {
+                $('.etiqueta-prev').empty().append(element.clone());
+            },
+            ShowOptions: function (element) {
+                $('.' + element.data('div')).removeClass('invisible');
+                $('#opciones').children().hide();
+                $('.controles__elemento').removeClass('control-activo');
+                $('.' + element.data('div')).show();
+                element.addClass('control-activo');
+            }
+        };
+    </script>
+}

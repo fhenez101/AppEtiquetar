@@ -1,0 +1,46 @@
+﻿@model App.Etiketarte.Model.Oferta
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="page-title">
+            <h1>Agregar nueva oferta</h1>
+        </div>
+        <div class="box">
+            @using (Html.BeginForm("Create", "Oferta", new { area = "Etiketas" }, FormMethod.Post, new { autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "input form-control upper-case" } })
+                    @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "input form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    <div class="checkbox">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Estado)
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group form-theme">
+                    <div class="form-actions">
+                        @Html.BtnAdd()
+                        @Html.BackAction("Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

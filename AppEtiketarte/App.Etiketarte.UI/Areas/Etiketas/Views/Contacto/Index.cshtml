@@ -1,0 +1,85 @@
+﻿@using App.Etiketarte.UI.Areas.Etiketas.Models.MailModels
+@model Contact
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="Inicio">
+                        <a title="Ir a la página de inicio" href="@Url.Action("Index", "Inicio", new { Area = "Etiketas" })">Home</a> <span>/</span>
+                    </li>
+                    <li class="category1601"> <strong>Contáctenos</strong> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-sm-5 wow">
+                <div class="col-main">
+                    <div class="page-title">
+                        <h2>Contactenos</h2>
+                    </div>
+                    <div class="static-contain">
+                        <fieldset class="group-select">
+                            <div id="billing-new-address-form">
+                                @using (Html.BeginForm("Send", "Contacto", new { area = "Etiketas" }, FormMethod.Post, new { autocomplete = "off" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    <ul>
+                                        <li>
+                                            @Html.LabelFor(model => model.Nombre)
+                                            <br>
+                                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "input-text", @title = "Nombre", @placeholder = "José" } })
+                                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                        </li>
+                                        <li>
+                                            @Html.LabelFor(model => model.Correo)
+                                            <br>
+                                            @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "input-text", @title = "Correo Electronico", @placeholder = "email@example.com" } })
+                                            @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                                        </li>
+                                        <li>
+                                            @Html.LabelFor(model => model.Telefono)
+                                            <br>
+                                            @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "input-text", @title = "Teléfono", @placeholder = "8888-8888" } })
+                                            @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                                        </li>
+                                        <li>
+                                            @Html.LabelFor(model => model.Comentario)
+                                            <br>
+                                            @Html.TextAreaFor(model => model.Comentario, new { @class = "input-text", @title = "Comentario", @placeholder = "Digite su comentario", rows = 3, cols = 5 })
+                                            @Html.ValidationMessageFor(model => model.Comentario, "", new { @class = "text-danger" })
+                                        </li>
+                                        <li>
+                                            <label>Captcha</label>
+                                            <br>
+                                            @Html.ReCaptcha()
+                                            @Html.ValidationMessageFor(model => model.ReCaptcha, "", new { @class = "text-danger" })
+                                        </li>
+                                    </ul>
+                                    <div class="buttons-set">
+                                        <button type="submit" title="Enviar" class="button submit">
+                                            <span>Enviar</span>
+                                        </button>
+                                    </div>
+                                }
+                                <br>
+                                <br>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </section>
+            <aside class="col-right sidebar col-sm-7 wow">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6609.804729619273!2d-84.0346062471036!3d9.916176736283104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3bf9923854d%3A0x24b13fc6b916a2d5!2sSan+Jos%C3%A9%2C+Curridabat%2C+Costa+Rica!5e0!3m2!1ses!2ses!4v1506488809944" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </aside>
+        </div>
+    </div>
+</div>

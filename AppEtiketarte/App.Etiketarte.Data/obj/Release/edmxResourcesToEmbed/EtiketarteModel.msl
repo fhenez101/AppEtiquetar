@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EtiketarteModelStoreContainer" CdmEntityContainer="EtiketarteEntities">
+    <EntitySetMapping Name="Artes">
+      <EntityTypeMapping TypeName="EtiketarteModel.Arte">
+        <MappingFragment StoreEntitySet="Arte">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="IdArte" ColumnName="IdArte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArteFormas">
+      <EntityTypeMapping TypeName="EtiketarteModel.ArteForma">
+        <MappingFragment StoreEntitySet="ArteForma">
+          <ScalarProperty Name="ContainerWidth" ColumnName="ContainerWidth" />
+          <ScalarProperty Name="FontMaxSize" ColumnName="FontMaxSize" />
+          <ScalarProperty Name="FontMinSize" ColumnName="FontMinSize" />
+          <ScalarProperty Name="CaracteresLinea" ColumnName="CaracteresLinea" />
+          <ScalarProperty Name="NumeroLineas" ColumnName="NumeroLineas" />
+          <ScalarProperty Name="TextAlign" ColumnName="TextAlign" />
+          <ScalarProperty Name="TextLeft" ColumnName="TextLeft" />
+          <ScalarProperty Name="TextTop" ColumnName="TextTop" />
+          <ScalarProperty Name="IdForma" ColumnName="IdForma" />
+          <ScalarProperty Name="IdArte" ColumnName="IdArte" />
+          <ScalarProperty Name="IdConfEtiketa" ColumnName="IdConfEtiketa" />
+          <ScalarProperty Name="IdArteForma" ColumnName="IdArteForma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArteSplits">
+      <EntityTypeMapping TypeName="EtiketarteModel.ArteSplit">
+        <MappingFragment StoreEntitySet="ArteSplit">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdArte" ColumnName="IdArte" />
+          <ScalarProperty Name="IdArteSplit" ColumnName="IdArteSplit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CANTON_CR">
+      <EntityTypeMapping TypeName="EtiketarteModel.CANTON_CR">
+        <MappingFragment StoreEntitySet="CANTON_CR">
+          <ScalarProperty Name="nombre_canton" ColumnName="nombre_canton" />
+          <ScalarProperty Name="codigo_provincia" ColumnName="codigo_provincia" />
+          <ScalarProperty Name="codigo_canton" ColumnName="codigo_canton" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="EtiketarteModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Hexadecimal" ColumnName="Hexadecimal" />
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConfEtiketas">
+      <EntityTypeMapping TypeName="EtiketarteModel.ConfEtiketa">
+        <MappingFragment StoreEntitySet="ConfEtiketa">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdEtiketa" ColumnName="IdEtiketa" />
+          <ScalarProperty Name="IdConfEtiketa" ColumnName="IdConfEtiketa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleColors">
+      <EntityTypeMapping TypeName="EtiketarteModel.DetalleColor">
+        <MappingFragment StoreEntitySet="DetalleColor">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdArteForma" ColumnName="IdArteForma" />
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="IdDetalleColor" ColumnName="IdDetalleColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleOrdens">
+      <EntityTypeMapping TypeName="EtiketarteModel.DetalleOrden">
+        <MappingFragment StoreEntitySet="DetalleOrden">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Texto" ColumnName="Texto" />
+          <ScalarProperty Name="NumeroLineas" ColumnName="NumeroLineas" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+          <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+          <ScalarProperty Name="IdDetalleOrden" ColumnName="IdDetalleOrden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleTipografias">
+      <EntityTypeMapping TypeName="EtiketarteModel.DetalleTipografia">
+        <MappingFragment StoreEntitySet="DetalleTipografia">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdArteForma" ColumnName="IdArteForma" />
+          <ScalarProperty Name="IdTipografia" ColumnName="IdTipografia" />
+          <ScalarProperty Name="IdDetalleTipografia" ColumnName="IdDetalleTipografia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISTRITO_CR">
+      <EntityTypeMapping TypeName="EtiketarteModel.DISTRITO_CR">
+        <MappingFragment StoreEntitySet="DISTRITO_CR">
+          <ScalarProperty Name="nombre_distrito" ColumnName="nombre_distrito" />
+          <ScalarProperty Name="codigo_canton" ColumnName="codigo_canton" />
+          <ScalarProperty Name="codigo_distrito" ColumnName="codigo_distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Etiketas">
+      <EntityTypeMapping TypeName="EtiketarteModel.Etiketa">
+        <MappingFragment StoreEntitySet="Etiketa">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdEtiketa" ColumnName="IdEtiketa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Formas">
+      <EntityTypeMapping TypeName="EtiketarteModel.Forma">
+        <MappingFragment StoreEntitySet="Forma">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="IdForma" ColumnName="IdForma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormaEnvios">
+      <EntityTypeMapping TypeName="EtiketarteModel.FormaEnvio">
+        <MappingFragment StoreEntitySet="FormaEnvio">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdFormaEnvio" ColumnName="IdFormaEnvio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormaPagoes">
+      <EntityTypeMapping TypeName="EtiketarteModel.FormaPago">
+        <MappingFragment StoreEntitySet="FormaPago">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormaSplits">
+      <EntityTypeMapping TypeName="EtiketarteModel.FormaSplit">
+        <MappingFragment StoreEntitySet="FormaSplit">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdForma" ColumnName="IdForma" />
+          <ScalarProperty Name="IdFormaSplit" ColumnName="IdFormaSplit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logoes">
+      <EntityTypeMapping TypeName="EtiketarteModel.Logo">
+        <MappingFragment StoreEntitySet="Logo">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdLogo" ColumnName="IdLogo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogoEtiketas">
+      <EntityTypeMapping TypeName="EtiketarteModel.LogoEtiketa">
+        <MappingFragment StoreEntitySet="LogoEtiketa">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdLogo" ColumnName="IdLogo" />
+          <ScalarProperty Name="IdEtiketa" ColumnName="IdEtiketa" />
+          <ScalarProperty Name="IdLogoEtiketa" ColumnName="IdLogoEtiketa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogoSplits">
+      <EntityTypeMapping TypeName="EtiketarteModel.LogoSplit">
+        <MappingFragment StoreEntitySet="LogoSplit">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdLogo" ColumnName="IdLogo" />
+          <ScalarProperty Name="IdLogoSplit" ColumnName="IdLogoSplit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordens">
+      <EntityTypeMapping TypeName="EtiketarteModel.Orden">
+        <MappingFragment StoreEntitySet="Orden">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+          <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+          <ScalarProperty Name="FechaOrden" ColumnName="FechaOrden" />
+          <ScalarProperty Name="TrackingImage" ColumnName="TrackingImage" />
+          <ScalarProperty Name="TrackingCode" ColumnName="TrackingCode" />
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="TelefonoContacto" ColumnName="TelefonoContacto" />
+          <ScalarProperty Name="ApellidoContacto" ColumnName="ApellidoContacto" />
+          <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+          <ScalarProperty Name="DireccionEnvio" ColumnName="DireccionEnvio" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="codigo_distrito" ColumnName="codigo_distrito" />
+          <ScalarProperty Name="codigo_canton" ColumnName="codigo_canton" />
+          <ScalarProperty Name="codigo_provincia" ColumnName="codigo_provincia" />
+          <ScalarProperty Name="codigoOrden" ColumnName="codigoOrden" />
+          <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+          <ScalarProperty Name="IdFormaEnvio" ColumnName="IdFormaEnvio" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Perfils">
+      <EntityTypeMapping TypeName="EtiketarteModel.Perfil">
+        <MappingFragment StoreEntitySet="Perfil">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productoes">
+      <EntityTypeMapping TypeName="EtiketarteModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVINCIA_CR">
+      <EntityTypeMapping TypeName="EtiketarteModel.PROVINCIA_CR">
+        <MappingFragment StoreEntitySet="PROVINCIA_CR">
+          <ScalarProperty Name="nombre_provincia" ColumnName="nombre_provincia" />
+          <ScalarProperty Name="codigo_provincia" ColumnName="codigo_provincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipografias">
+      <EntityTypeMapping TypeName="EtiketarteModel.Tipografia">
+        <MappingFragment StoreEntitySet="Tipografia">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdTipoGrafia" ColumnName="IdTipoGrafia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="EtiketarteModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EmailEnvio" ColumnName="EmailEnvio" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FacebookEmail" ColumnName="FacebookEmail" />
+          <ScalarProperty Name="FacebookId" ColumnName="FacebookId" />
+          <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

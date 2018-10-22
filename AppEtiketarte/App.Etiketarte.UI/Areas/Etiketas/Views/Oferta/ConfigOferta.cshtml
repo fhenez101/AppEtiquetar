@@ -1,0 +1,59 @@
+﻿@model IEnumerable<App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.Oferta.VmOferta>
+
+<h2>Configuracion de ofertas</h2>
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="control">
+            @Html.AddAction("CreateDetalleOferta", new { id = ViewBag.IdOferta })
+        </div>
+        <table class="table table-bordered table-responsive jtv-cart-summary">
+            <thead>
+                <tr>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.NombreEtiketa)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.NombreConfEtiketa)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Cantidad)
+                    </td>
+                    <td class="fila-centrada">
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </td>
+                    <td class="fila-centrada">Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreEtiketa)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.NombreConfEtiketa)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td class="fila-centrada">
+                            @Html.EditAction("EditDetalleOferta", "Oferta", new { id = item.IdDetalleOferta })
+                            @Html.DetailAction("DetailsDetalleOferta", "Oferta", new { id = item.IdDetalleOferta })
+                            @Html.DeleteAction("DeleteDetalleOferta", "Oferta", new { id = item.IdDetalleOferta })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="form-group form-theme">
+            <div class="form-actions">
+                @Html.BackAction("Index")
+            </div>
+        </div>
+    </div>
+</section>

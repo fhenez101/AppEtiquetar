@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e0ff619fbe14e638890a2c1d6b76a58" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="EtiketarteModel.Arte" Width="1.5" PointX="11.75" PointY="8.25" />
+        <EntityTypeShape EntityType="EtiketarteModel.ArteForma" Width="1.5" PointX="14" PointY="7.25" />
+        <EntityTypeShape EntityType="EtiketarteModel.ArteSplit" Width="1.5" PointX="14" PointY="13.875" />
+        <EntityTypeShape EntityType="EtiketarteModel.CANTON_CR" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="EtiketarteModel.Color" Width="1.5" PointX="14" PointY="3.375" />
+        <EntityTypeShape EntityType="EtiketarteModel.ConfEtiketa" Width="1.5" PointX="11.75" PointY="4.5" />
+        <EntityTypeShape EntityType="EtiketarteModel.DetalleColor" Width="1.5" PointX="16.25" PointY="5.375" />
+        <EntityTypeShape EntityType="EtiketarteModel.DetalleOferta" Width="1.5" PointX="19" PointY="11.375" />
+        <EntityTypeShape EntityType="EtiketarteModel.DetalleOrden" Width="1.5" PointX="9.75" PointY="11" />
+        <EntityTypeShape EntityType="EtiketarteModel.DetalleTipografia" Width="1.5" PointX="16.25" PointY="8.375" />
+        <EntityTypeShape EntityType="EtiketarteModel.DISTRITO_CR" Width="1.5" PointX="5.25" PointY="15.25" />
+        <EntityTypeShape EntityType="EtiketarteModel.Etiketa" Width="1.5" PointX="9.5" PointY="4.375" />
+        <EntityTypeShape EntityType="EtiketarteModel.Forma" Width="1.5" PointX="11.75" PointY="15" />
+        <EntityTypeShape EntityType="EtiketarteModel.FormaEnvio" Width="1.5" PointX="5.25" PointY="10.875" />
+        <EntityTypeShape EntityType="EtiketarteModel.FormaPago" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="EtiketarteModel.FormaSplit" Width="1.5" PointX="14" PointY="19.5" />
+        <EntityTypeShape EntityType="EtiketarteModel.InputText" Width="1.5" PointX="16.25" PointY="14.375" />
+        <EntityTypeShape EntityType="EtiketarteModel.Logo" Width="1.5" PointX="9.5" PointY="16.625" />
+        <EntityTypeShape EntityType="EtiketarteModel.LogoEtiketa" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EtiketarteModel.LogoSplit" Width="1.5" PointX="11.75" PointY="21.875" />
+        <EntityTypeShape EntityType="EtiketarteModel.Oferta" Width="1.5" PointX="16.75" PointY="17.625" />
+        <EntityTypeShape EntityType="EtiketarteModel.Orden" Width="1.5" PointX="7.5" PointY="9.25" />
+        <EntityTypeShape EntityType="EtiketarteModel.Perfil" Width="1.5" PointX="3" PointY="19.25" />
+        <EntityTypeShape EntityType="EtiketarteModel.Presentacion" Width="1.5" PointX="11.75" PointY="18.5" />
+        <EntityTypeShape EntityType="EtiketarteModel.Producto" Width="1.5" PointX="7.25" PointY="4.75" />
+        <EntityTypeShape EntityType="EtiketarteModel.PROVINCIA_CR" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="EtiketarteModel.Tipografia" Width="1.5" PointX="14" PointY="16.375" />
+        <EntityTypeShape EntityType="EtiketarteModel.Usuario" Width="1.5" PointX="5.25" PointY="18.625" />
+        <AssociationConnector Association="EtiketarteModel.FK_Arte" />
+        <AssociationConnector Association="EtiketarteModel.FK_ArteToSplit" />
+        <AssociationConnector Association="EtiketarteModel.FK_ArteForma" />
+        <AssociationConnector Association="EtiketarteModel.FK_ArteFormaDetalle" />
+        <AssociationConnector Association="EtiketarteModel.FK_ConfEtiketa" />
+        <AssociationConnector Association="EtiketarteModel.FK_FormaDetalle" />
+        <AssociationConnector Association="EtiketarteModel.FK_InputTextArteForma" />
+        <AssociationConnector Association="EtiketarteModel.FK_CANTON_CR" />
+        <AssociationConnector Association="EtiketarteModel.FK_CANTON_PROVINCIA" />
+        <AssociationConnector Association="EtiketarteModel.FK_DISTRITO_CANTON" />
+        <AssociationConnector Association="EtiketarteModel.FK_ColorDetalle" />
+        <AssociationConnector Association="EtiketarteModel.FK_ConfEtiketaDetalleOferta" />
+        <AssociationConnector Association="EtiketarteModel.FK_EtiketaConf" />
+        <AssociationConnector Association="EtiketarteModel.FK_ConfEtiketaOferta" />
+        <AssociationConnector Association="EtiketarteModel.FK_DetallePresentacion" />
+        <AssociationConnector Association="EtiketarteModel.FK_Orden" />
+        <AssociationConnector Association="EtiketarteModel.FK_TipografiaDetalle" />
+        <AssociationConnector Association="EtiketarteModel.FK_DISTRITO_CR" />
+        <AssociationConnector Association="EtiketarteModel.FK_Etiketa" />
+        <AssociationConnector Association="EtiketarteModel.FK_EtiketaPresentacion" />
+        <AssociationConnector Association="EtiketarteModel.FK_Producto" />
+        <AssociationConnector Association="EtiketarteModel.FK_FormaToSplit" />
+        <AssociationConnector Association="EtiketarteModel.FK_FormaEnvio" />
+        <AssociationConnector Association="EtiketarteModel.FK_FormaPago" />
+        <AssociationConnector Association="EtiketarteModel.FK_Logo" />
+        <AssociationConnector Association="EtiketarteModel.FK_LogoToSplit" />
+        <AssociationConnector Association="EtiketarteModel.FK_PROVINCIA_CR" />
+        <AssociationConnector Association="EtiketarteModel.FK_Usuarios" />
+        <AssociationConnector Association="EtiketarteModel.FK_Perfil" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

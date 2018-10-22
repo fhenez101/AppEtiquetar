@@ -1,0 +1,88 @@
+﻿@*@{
+        Layout = null;
+    }*@
+
+@*@section styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Style/Etiketas/previsualizacion.css")" />
+}*@
+<div class="flickr"></div>
+<style>
+    .flickr .imgWrap {
+        border: 3px outset #666;
+        line-height: 140px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        -moz-box-shadow: 2px 2px 5px #333;
+        -webkit-box-shadow: 2px 2px 5px #333;
+        box-shadow: 2px 2px 5px #333;
+        width: 300px;
+        height: 200px;
+    }
+
+        .flickr .imgWrap img {
+            width: 300px;
+            height: 200px;
+        }
+
+            .flickr .imgWrap img.lazy {
+                display: block;
+                width: 100px;
+                height: 100px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 15%;
+            }
+</style>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/AjaxSettings/Settings.js"></script>
+<script>
+    var pageIndex = 1;
+    var pageCount = 0;
+    var imageList = '';
+
+    var img = {
+        isVisible: function ($element) {
+            var topView = $(window).scrollTop();
+            var botView = topView + $(window).height();
+            var topElement = $element.offset().top;
+            var botElement = topElement + $element.height();
+
+            return ((botElement <= botView) && (topElement >= topView));
+        },
+        lazyLoadImage: function () {
+            $('.flickr img.lazy').each(function () {
+                if (img.isVisible($(this).closest('.imgWrap'))) {
+                    $(this).one('load', function () {
+                        $(this).removeClass('lazy');
+                    }).attr('src', $(this).data('src')).removeAttr('data-src');
+                }
+            });
+        },
+        getImageGallery: function () {
+            $.ajax({
+                method: 'GET',
+                url: 'https://api.flickr.com/services/feeds/photos_public.gne?tags=nature&tagmode=any&format=json&jsoncallback=?',
+                data: {},
+                dataType: 'json',
+                success: function (data) {
+                    $(data.items).each(function (i, item) {
+                        imageList += '<div class="col-md-4"><figure><div class="imgWrap"><img class="lazy" src="http://www.jquerycookbook.com/demos/S6-Images/images/ajax-loader_b.gif" data-src="' + item.media.m + '"/></div><figcaption>' + item.title + '</figcaption></figure></div>';
+                    });
+
+                    $('.flickr').append(imageList);
+                    img.lazyLoadImage();
+                },
+                error: function () {
+                    console.log('Error while loading images')
+                }
+            });
+        }
+    };
+
+    $(function () {
+        img.getImageGallery();
+        $(window).scroll(img.lazyLoadImage);
+    });
+</script>

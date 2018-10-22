@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Image/Pymes/android-icon-36x36.png")">
+    <title>Index-Pymes</title>
+    @Styles.Render("~/Bundles/Style/Pymes")
+    <!--[if lt IE 9]>
+      <script src="@Url.Content("~/Scripts/Pymes/html5shiv.js")"></script>
+      <script src="@Url.Content("~/Scripts/Pymes/respond.min.js")"></script>
+    <![endif]-->
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+<body class="nomobile">
+    <section id="header">
+        @RenderBody()
+    </section>
+    @Scripts.Render("~/Bundles/Script/Pymes")
+</body>
+</html>

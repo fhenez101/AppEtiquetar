@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Etiketarte.Model", "App.Etiketarte.Model\App.Etiketarte.Model.csproj", "{D244A06F-989A-4336-B99A-6E3A596FF00F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Etiketarte.Data", "App.Etiketarte.Data\App.Etiketarte.Data.csproj", "{ECB33300-444B-4DE5-9437-86E229F9F530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Etiketarte.Business", "App.Etiketarte.Business\App.Etiketarte.Business.csproj", "{201B07E2-50C3-4832-A3DE-549854C5D0E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Etiketarte.Notification", "App.Etiketarte.Notification\App.Etiketarte.Notification.csproj", "{85C86250-EFAB-44B0-B4A1-FB7F60E84CA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Etiketarte.Utilities", "App.Etiketarte.Utilities\App.Etiketarte.Utilities.csproj", "{E4C662DF-E77F-42CA-B782-5A394F138C58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Etiketarte.UI", "App.Etiketarte.UI\App.Etiketarte.UI.csproj", "{5F7E564E-61A3-4630-AC23-DB6046339615}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D244A06F-989A-4336-B99A-6E3A596FF00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D244A06F-989A-4336-B99A-6E3A596FF00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D244A06F-989A-4336-B99A-6E3A596FF00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D244A06F-989A-4336-B99A-6E3A596FF00F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECB33300-444B-4DE5-9437-86E229F9F530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECB33300-444B-4DE5-9437-86E229F9F530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECB33300-444B-4DE5-9437-86E229F9F530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECB33300-444B-4DE5-9437-86E229F9F530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201B07E2-50C3-4832-A3DE-549854C5D0E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201B07E2-50C3-4832-A3DE-549854C5D0E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201B07E2-50C3-4832-A3DE-549854C5D0E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201B07E2-50C3-4832-A3DE-549854C5D0E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85C86250-EFAB-44B0-B4A1-FB7F60E84CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C86250-EFAB-44B0-B4A1-FB7F60E84CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C86250-EFAB-44B0-B4A1-FB7F60E84CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C86250-EFAB-44B0-B4A1-FB7F60E84CA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4C662DF-E77F-42CA-B782-5A394F138C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C662DF-E77F-42CA-B782-5A394F138C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C662DF-E77F-42CA-B782-5A394F138C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4C662DF-E77F-42CA-B782-5A394F138C58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F7E564E-61A3-4630-AC23-DB6046339615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F7E564E-61A3-4630-AC23-DB6046339615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F7E564E-61A3-4630-AC23-DB6046339615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F7E564E-61A3-4630-AC23-DB6046339615}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://etiketarteproyect.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = App.Etiketarte.Model\\App.Etiketarte.Model.csproj
+		SccProjectName1 = App.Etiketarte.Model
+		SccLocalPath1 = App.Etiketarte.Model
+		SccProjectUniqueName2 = App.Etiketarte.Data\\App.Etiketarte.Data.csproj
+		SccProjectName2 = App.Etiketarte.Data
+		SccLocalPath2 = App.Etiketarte.Data
+		SccProjectUniqueName3 = App.Etiketarte.Business\\App.Etiketarte.Business.csproj
+		SccProjectName3 = App.Etiketarte.Business
+		SccLocalPath3 = App.Etiketarte.Business
+		SccProjectUniqueName4 = App.Etiketarte.Notification\\App.Etiketarte.Notification.csproj
+		SccProjectName4 = App.Etiketarte.Notification
+		SccLocalPath4 = App.Etiketarte.Notification
+		SccProjectUniqueName5 = App.Etiketarte.Utilities\\App.Etiketarte.Utilities.csproj
+		SccProjectName5 = App.Etiketarte.Utilities
+		SccLocalPath5 = App.Etiketarte.Utilities
+		SccProjectUniqueName6 = App.Etiketarte.UI\\App.Etiketarte.UI.csproj
+		SccProjectName6 = App.Etiketarte.UI
+		SccLocalPath6 = App.Etiketarte.UI
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+﻿@using App.Etiketarte.UI.Settings
+@using App.Etiketarte.UI.Models.Identity
+
+@{
+    if (SessionSettings<FacebookModel>.FacebookModel.IsAdmin)
+    {
+        Layout = "~/Areas/Etiketas/Views/Shared/_AdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Areas/Etiketas/Views/Shared/_Layout.cshtml";
+    }
+}

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Etiketarte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/favicon.ico")">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,500,700,800" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lemonada|Lobster|Raleway:400,700|Shadows+Into+Light|Poppins" />
+    @Styles.Render("~/Bundles/Style/Etiketas")
+    <style>
+        .back-ground {
+            background-image: url(http://etiketarte.net/img/varias/bg-line-vert-header.png);
+        }
+    </style>
+</head>
+<body class="back-ground">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header"></div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-xs-12 coppyright">
+                        Copyright © @DateTime.Now.Year
+                        <a href="#">&nbsp Comercio </a>. Todos los derechos reservados.
+                    </div>
+                    <div class="footer-links">
+                        <div class="social pull-right">
+                            <ul class="inline-mode">
+                                <li class="social-network fb">
+                                    <a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social-network googleplus">
+                                    <a title="Connect us on Google+" target="_blank" href="https://plus.google.com">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="social-network tw">
+                                    <a title="Connect us on Twitter" target="_blank" href="https://twitter.com/">
+                                        <i class="icon-social-twitter icons"></i>
+                                    </a>
+                                </li>
+                                <li class="social-network instagram">
+                                    <a title="Connect us on Instagram" target="_blank" href="https://instagram.com/">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

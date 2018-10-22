@@ -1,0 +1,144 @@
+﻿@model App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.Oferta.VmDetalleOferta
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="page-title">
+            <h1>Agregar nuevo detalle de oferta</h1>
+        </div>
+        <div class="box">
+            @using (Html.BeginForm("CreateDetalleOferta", "Oferta", new { area = "Etiketas" }, FormMethod.Post, new { autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.IdEtiketa, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.DropDownListFor(model => model.IdEtiketa, Model.CmbEtiketas, "--Select One--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdEtiketa, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.CmbConfEtiketas, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <select id="CmbConfEtiketas" name="IdConfEtiketa" class="input form-control" disabled>
+                        <option value="0">--Select One--</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.CmbConfEtiketas, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.CmbPresentaciones, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <select id="CmbPresentaciones" name="IdPresentacion" class="input form-control" disabled>
+                        <option value="0">--Select One--</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.CmbPresentaciones, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group form-theme">
+                    <div class="checkbox">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Estado)
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    @Html.HiddenFor(model => model.IdOferta)
+                </div>
+                <div class="form-group form-theme">
+                    <div class="form-actions">
+                        @Html.BtnAdd()
+                        @Html.BackAction("ConfigOferta", new { id = Model.IdOferta })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        //; (function ($, window, document, undefined) {
+        //    $.extend($.fn, {
+        //        Milton: function (color) {
+        //            console.log($(this))
+        //            return $(this).css('color', color);
+        //        }
+        //    });
+        //})(jQuery, window, document);
+
+        $(function () {
+
+            //$('h1').Milton('yellow').css('color', 'red');
+
+            var ddlConfEtiketa = $('#CmbConfEtiketas');
+            var ddlPresentacion = $('#CmbPresentaciones');
+
+            $('#IdEtiketa').change(function () {
+                load.init(ddlPresentacion);
+                load.confEtiketas(ddlConfEtiketa, $(this).val());
+            });
+
+            ddlConfEtiketa.change(function () {
+                load.presentaciones(ddlPresentacion, $(this).val());
+            });
+        });
+
+        var load = (function () {
+            var func = {
+                Init: function (elemente) {
+                    elemente.prop('disabled', true);
+                    elemente.find('option').remove();
+                    elemente.append('<option value="0">--Select One--</option>');
+                },
+                AjaxCall: function (url, data) {
+                    var result = {};
+
+                    $.ajax({
+                        data: data,
+                        url: url,
+                        async: false,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (response) {
+                            result = response;
+                        },
+                        error: function () {
+                            alert('Ocurrio un error en el servidor ..');
+                        }
+                    });
+
+                    return result;
+                },
+                ConfEtiketas: function (cmbConfEtiketas, idEtiketa) {
+                    cmbConfEtiketas.prop('disabled', false);
+                    cmbConfEtiketas.find('option').remove();
+                    cmbConfEtiketas.append('<option value="0">--Select One--</option>');
+
+                    var result = func.AjaxCall('@Url.Action("GetConfEtiketaOferta", "Oferta")', { 'idEtiketa': idEtiketa });
+
+                    $.each(result.CmbConfEtiketas, function (i, v) {
+                        cmbConfEtiketas.append('<option value="' + v.Value + '">' + v.Text + '</option>');
+                    });
+                },
+                Presentaciones: function (cmbPresentaciones, idEtiketa) {
+                    cmbPresentaciones.prop('disabled', false);
+                    cmbPresentaciones.find('option').remove();
+                    cmbPresentaciones.append('<option value="0">--Select One--</option>');
+
+                    var result = func.AjaxCall('@Url.Action("GetPresentacionOferta", "Oferta")', { 'idEtiketa': idEtiketa });
+
+                    $.each(result.CmbPresentaciones, function (i, v) {
+                        cmbPresentaciones.append('<option value="' + v.Value + '">' + v.Text + '</option>');
+                    });
+                }
+            };
+
+            return {
+                init: func.Init,
+                confEtiketas: func.ConfEtiketas,
+                presentaciones: func.Presentaciones
+            };
+        })();
+    </script>
+}

@@ -1,0 +1,13 @@
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Business.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Business.pdb
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Data.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Model.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Notification.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\EntityFramework.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Data.pdb
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Model.pdb
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\App.Etiketarte.Notification.pdb
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\bin\Debug\EntityFramework.xml
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\obj\Debug\App.Etiketarte.Business.csprojResolveAssemblyReference.cache
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\obj\Debug\App.Etiketarte.Business.dll
+C:\AppEtiketarte\AppEtiketarte\App.Etiketarte.Business\obj\Debug\App.Etiketarte.Business.pdb

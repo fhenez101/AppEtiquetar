@@ -1,0 +1,43 @@
+﻿@model App.Etiketarte.Model.Logo
+
+<h2>Detalles logo</h2>
+
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="box">
+            <div class="page-title">
+                <h1>Detalle Logo</h1>
+            </div>
+            <div class="form-group form-theme">
+                @Html.ShowImage(Model.LogoSplits.ToArray())
+            </div>
+
+            <div class="form-group form-theme">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "input form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group form-theme">
+                <div class="checkbox">
+                    @Html.LabelFor(model => model.Path, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Path, new { htmlAttributes = new { @class = "input form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Path, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-theme">
+                <div class="checkbox">
+                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group form-theme">
+                <div class="form-actions">
+                    @Html.ActionLink("Editar", "Edit", new { id = Html.Slug(Url.RequestContext.RouteData.Values["id"], "")})
+                    @Html.ActionLink("Volver a la lista", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

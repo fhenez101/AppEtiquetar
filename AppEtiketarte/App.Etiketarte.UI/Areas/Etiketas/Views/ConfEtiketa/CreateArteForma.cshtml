@@ -1,0 +1,287 @@
+﻿@model App.Etiketarte.UI.Areas.Etiketas.Models.ViewModels.VmArteForma
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Style/Etiketas/previsualizacion.css")" />
+    <link href="@Url.Content("~/Content/bootstrap-slider.min.css")" rel="stylesheet" />
+    <style>
+        .slider.slider-horizontal {
+            margin-left: 15px;
+        }
+
+        .containerImage .fatherDiv div img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+    </style>
+}
+
+<section id="app_arteForma" class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-title">
+            <h1>Configurar Etiqueta</h1>
+        </div>
+        <div class="box">
+            @using (Html.BeginForm("CreateArteForma", "ConfEtiketa", new { area = "Etiketas" }, FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group form-theme">
+                    <h3>Elegir Forma</h3>
+                    <div class="row">
+                        @foreach (var item in Model.Forma)
+                        {
+                            <div class="col-md-4 forma">
+                                @Html.ShowImage(item.Path, item.FormaSplits.ToArray())
+                                <input type="radio" name="IdForma" class="form-check-input" value="@item.IdForma" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="form-group form-theme">
+                    <div class="upload-arte">
+                        <h3>Subir arte</h3>
+                        @Html.CreateImage()
+                    </div>
+                    <div class="form-group form-theme">
+                        <label for="Codigo">Código</label>
+                        <input type="text" id="Codigo" name="Codigo" class="form-control upper-case" />
+                    </div>
+                    <div class="form-group form-theme">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" id="Nombre" name="Nombre" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group form-theme">
+                    <h3>Seleccionar fuentes</h3>
+                    <div class="tipografia">
+                        @foreach (var item in Model.Tipografias)
+                        {
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label font-@item.Nombre.ToLower()">
+                                    <input type="checkbox" name="IdTipografia[]" class="form-check-input" value="@item.IdTipoGrafia" checked="checked"> @item.Nombre
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="form-group form-theme">
+                    <h3>Seleccionar colores</h3>
+                    <div class="color-palette">
+                        @foreach (var item in Model.Colors)
+                        {
+                            <label style="background-color: @item.Hexadecimal" title="@item.Nombre">
+                                <input type="checkbox" name="IdColor[]" value="@item.IdColor" checked="checked" />
+                            </label>
+                        }
+                    </div>
+                </div>
+                <h3>Establecer posición del texto</h3>
+                <div class="form-group form-theme">
+                    <label for="maxCharPerLine">Número de caracteres por línea</label>
+                    <input type="number" id="maxCharPerLine" class="form-control" name="CaracteresLinea" />
+                </div>
+                <div class="form-group form-theme">
+                    <label>Numero de lineas</label>
+                    <button type="button" id="btnAdd" class="btn btn-success">
+                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="form-group form-theme inputTextDiv"></div>
+                <div class="form-inline">
+                    <h3>Seleccione el rango de tamaño de letra</h3>
+                    <div class="form-group form-theme">
+                        <label>Tamaño minimo</label>
+                        <select name="FontMinSize" id="minSizeFont" class="input form-control">
+                            <option value="16">16px</option>
+                            <option value="20">20px</option>
+                            <option value="24">24px</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-theme">
+                        <label>Tamaño maximo</label>
+                        <select name="FontMaxSize" id="maxSizeFont" class="input form-control">
+                            <option value="18">18px</option>
+                            <option value="24">24px</option>
+                            <option value="36">36px</option>
+                        </select>
+                    </div>
+                </div>
+                <h3 class="arte-preview">Coloque la posición del texto y su alienación</h3>
+                <div class="row arte-preview">
+                    <div class="col-md-12 arte-preview-alert">
+                        <div class="alert alert-info text-center">
+                            <strong>Cargue</strong> el arte y <strong>especifique</strong> el número de caracteres por línea para colocar la posición
+                            del texto y la alineación.
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-settings">
+                        <div class="parent">
+                            <div class="parent-left"></div>
+                            <div class="length" id="draggable">
+                                <span id="draggableLength" class="length-hide"></span>
+                            </div>
+                        </div>
+                        <div class="text-actions">
+                            <select id="fontSizes"></select>
+                            <button type="button" id="btnAlignLeft" class="align-button" title="Alinear a la izquierda">
+                                <i class="fa fa-align-left fa-lg" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" id="btnAlignCenter" class="align-button" title="Alinear al centro">
+                                <i class="fa fa-align-center fa-lg" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" id="btnAlignRight" class="align-button" title="Alinear a la derecha">
+                                <i class="fa fa-align-right fa-lg" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" id="setPosition" class="align-button button-accept" title="Aceptar">
+                                <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-preview">
+                        <div class="prev">
+                            <div class="prev-rigt"></div>
+                            <div class="text-container">
+                                <p id="demoText" class="text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <input type="hidden" id="textTop" name="TextTop" value="" />
+                    <input type="hidden" id="textLeft" name="TextLeft" value="" />
+                    <input type="hidden" id="textAlign" name="TextAlign" value="" />
+                    <input type="hidden" id="containerWidth" name="ContainerWidth" value="" />
+                    <input type="hidden" id="numeroLineas" name="NumeroLineas" value="" />
+                    <input type="hidden" id="idConfEtiketa" name="IdConfEtiketa" value="@Model.IdConfEtiketa" />
+                </div>
+
+                <div class="form-group form-theme">
+                    <div class="form-actions">
+                        @Html.BtnAdd()
+                        @Html.BackAction("Arteforma", new { id = Model.IdConfEtiketa })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/bootstrap-slider.min.js"></script>
+    <script src="~/Scripts/Etiketas/insert-arteforma.js"></script>
+    <script src="~/Scripts/Etiketas/text-position.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('form').on('submit', function (e) {
+                e.preventDefault();
+
+                var children = $('.inputTextDiv').children();
+
+                $('#numeroLineas').val(children.length);
+                //$(this)[0].submit();
+
+
+                //<input type="hidden" id="inputText" name="InputText[][]" value="" />
+
+                console.log(children)
+
+                for (var i = 0; i < children.length ; i++) {
+                    console.log(children[i])
+                }
+
+                //$('.hide-elements').append('');
+
+
+            });
+
+            $('#btnAdd').click(function () {
+                $('.inputTextDiv').append(load.CreateInput());
+            });
+
+            $(document).on('click', '.removePanel', function () {
+                var element = $(this).parent().parent().parent().parent();
+                element.fadeOut('slow');
+                setTimeout(function () { element.remove(); }, 2000);
+            });
+
+            var load = {
+                CreateInput: function () {
+                    var id = new Date().getTime();
+                    var panelGroup = $(document.createElement('div')).attr('class', 'panel-group');
+                    var panelPrimary = $(document.createElement('div')).attr('class', 'panel panel-primary');
+                    var panelBody = $(document.createElement('div')).attr('class', 'panel-body');
+                    var nameDiv = $(document.createElement('div')).attr('class', 'form-group');
+                    var nameLabel = $(document.createElement('label')).attr({
+                        'for': id + '-name'
+                    }).html('Nombre del campo');
+                    var nameInput = $(document.createElement('input')).attr({
+                        'type': 'text',
+                        'id': id + '-name',
+                        'class': 'form-control',
+                        'placeholder': 'Digite el texto solicitado'
+                    });
+                    var textDiv = $(document.createElement('div')).attr('class', 'form-group');
+                    var textLabel = $(document.createElement('label')).attr({
+                        'for': id + '-text'
+                    }).html('Texto del campo');
+                    var textInput = $(document.createElement('input')).attr({
+                        'type': 'text',
+                        'id': id + '-text',
+                        'class': 'form-control',
+                        'placeholder': 'Digite el texto solicitado'
+                    });
+                    var panelFooter = $(document.createElement('div')).attr('class', 'panel-footer clearfix');
+                    var pullRight = $(document.createElement('div')).attr('class', 'pull-right');
+                    var button = $(document.createElement('button')).attr({
+                        'type': 'button',
+                        'class': 'btn btn-danger removePanel'
+                    }).html('Remover');
+
+                    panelBody.append(nameDiv.append(nameLabel).append(nameInput));
+                    panelBody.append(textDiv.append(textLabel).append(textInput));
+                    panelGroup.append(panelPrimary.append(panelBody).append(panelFooter.append(pullRight.append(button))));
+
+                    return panelGroup;
+                }
+            }
+
+            $(document).on('change', '.btn-file :file', function () {
+                var input = $(this);
+                var label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function (event, label) {
+                var input = $(this).parents('.input-group').find(':text');
+                var log = label;
+
+                if (input.length) {
+                    input.val(log);
+                }
+                else {
+                    if (log) {
+                        console.log(log);
+                    }
+                }
+            });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#img-upload').attr('src', e.target.result);
+                        $('.prev .prev-rigt, .parent .parent-left').html($('#img-upload').clone());
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $('#imgInp').change(function () {
+                readURL(this);
+            });
+        });
+    </script>
+}

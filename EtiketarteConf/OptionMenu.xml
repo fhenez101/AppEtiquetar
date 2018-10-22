@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<items>
+	<item Title="Productos" Text="Productos" Area="Etiketas" Ctrl="Producto" Mtd="Index"></item>
+	<item Title="Etiketas" Text="Etiketas" Area="Etiketas" Ctrl="Etiketa" Mtd="Index"></item>
+	<item Title="Formas" Text="Formas" Area="Etiketas" Ctrl="Forma" Mtd="Index"></item>
+	<item Title="Colores" Text="Colores" Area="Etiketas" Ctrl="Color" Mtd="Index"></item>
+	<item Title="Tipografias" Text="Tipografias" Area="Etiketas" Ctrl="Tipografia" Mtd="Index"></item>
+	<item Title="Configuracion Etiketa" Text="Configuracion Etiketa" Area="Etiketas" Ctrl="ConfEtiketa" Mtd="Index"></item>
+	<item Title="Ofertas" Text="Ofertas" Area="Etiketas" Ctrl="Oferta" Mtd="Index"></item>
+	<item Title="Promociones" Text="Promociones" Area="Etiketas" Ctrl="Promocion" Mtd="Index"></item>
+</items>

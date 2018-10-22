@@ -1,0 +1,19 @@
+﻿@using App.Etiketarte.UI.Areas.Etiketas.Models.MailModels
+@model Contact
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="Inicio">
+                        <a title="Ir a la página de inicio" href="@Url.Action("Index", "Inicio", new { Area = "Etiketas" })">Home</a> <span>/</span>
+                    </li>
+                    <li class="category1601"> <strong>Contáctenos</strong> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1>@Model.Nombre: su correo se envio correctamaente, le estaremos contactando a su telefono: @Model.Telefono</h1>

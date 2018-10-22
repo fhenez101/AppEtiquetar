@@ -1,0 +1,28 @@
+﻿@model App.Etiketarte.Model.Tipografia
+
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-title">
+            <h1>Detalle Tipografía</h1>
+        </div>
+        <div class="box">
+            <div class="form-group form-theme">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "input form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group form-theme">
+                <div class="checkbox">
+                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-theme">
+                <div class="form-actions">
+                    @Html.BackAction("Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

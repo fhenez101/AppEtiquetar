@@ -1,0 +1,79 @@
+﻿@using App.Etiketarte.UI.Settings
+@using App.Etiketarte.UI.Models.Identity
+@model App.Etiketarte.Model.Usuario
+
+@{
+    var objSession = SessionSettings<FacebookModel>.FacebookModel;
+}
+
+<div class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <section class="col-sm-9 wow">
+                <div class="my-account">
+                    <div class="dashboard">
+                        <div class="row user-profile">
+                            <div class="user-info col-md-4">
+                                <figure class="user-pic">
+                                    <img src="@objSession.Picture.Data.Url" class="img img-circle" alt="@objSession.FirstName">
+                                </figure>
+                                <div class="user-data">
+                                    <h4 class="user-name">@objSession.FirstName @objSession.LastName</h4>
+                                    <p class="user-mail">
+                                        <i class="fa fa-envelope"></i>
+                                        @Model.FacebookEmail
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="page-title">
+                                    <h2>Mi Perfil</h2>
+                                </div>
+                                @using (Html.BeginForm("Edit", "Dashboard", new { area = "Etiketas" }, FormMethod.Post, new { autocomplete = "off" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        <div class="form-group form-theme">
+                                            @Html.LabelFor(model => model.Nombre)
+                                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group form-theme">
+                                            @Html.LabelFor(model => model.Apellido)
+                                            @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group form-theme">
+                                            @Html.LabelFor(model => model.EmailEnvio)
+                                            @Html.EditorFor(model => model.EmailEnvio, new { htmlAttributes = new { @class = "form-control lower-case" } })
+                                            @Html.ValidationMessageFor(model => model.EmailEnvio, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group form-theme">
+                                            @Html.LabelFor(model => model.Telefono)
+                                            @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                                        </div>
+                                        
+                                        <button type="submit" class="btn-guardar" title="Guardar">Guardar</button>
+                                    }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <aside class="col-right sidebar col-sm-3 wow">
+                <div class="block block-account">
+                    <div class="block-title">Mi Cuenta</div>
+                    <div class="block-content">
+                        <ul>
+                            <li class="current"><a href="@Url.Action("Index", "Dashboard")">Panel de inicio</a></li>
+                            <li><a href="@Url.Action("Perfil", "Dashboard")">Mi perfil</a></li>
+                            <li><a href="">Mis ordenes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>

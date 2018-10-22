@@ -1,0 +1,42 @@
+﻿@model App.Etiketarte.Model.Color
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="~/Content/Style/Etiketas/bootstrap-colorpicker.min.css" />
+}
+
+<section class="main-container col-md-9">
+    <div>
+        <div class="page-title">
+            <h1>Detalle de color</h1>
+        </div>
+        <div class="box">
+            <div class="form-group form-theme">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "input form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group form-theme flex-column">
+                @Html.LabelFor(model => model.Hexadecimal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div id="cpicker" class="input-group color-picker-component">
+                    @Html.EditorFor(model => model.Hexadecimal, new { htmlAttributes = new { @class = "input form-control", @disabled = "disabled" } })
+                    <div class="input-group-addon">
+                        <div class="show-color-plain" style="background-color: @Model.Hexadecimal"></div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.Hexadecimal, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group form-theme">
+                <div class="checkbox">
+                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-theme">
+                <div class="form-actions">
+                    @Html.BackAction("Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

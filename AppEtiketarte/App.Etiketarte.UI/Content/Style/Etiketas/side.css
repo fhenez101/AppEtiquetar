@@ -1,0 +1,766 @@
+﻿/**********************
+TEXT
+**********************/
+.lower-case {
+    text-transform: lowercase;
+}
+
+.upper-case {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+/**********************
+GRID
+**********************/
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/**********************
+COMPONENTES
+**********************/
+.label-theme {
+    color: #fff;
+    padding: 7px;
+}
+
+.button a {
+    color: #666;
+}
+
+    .button a:hover {
+        color: #fff;
+    }
+
+.btn-guardar {
+    background-color: #8ac42f;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 4px;
+    border: none;
+}
+
+    .btn-guardar:hover {
+        background-color: #333;
+        transition: all 0.4s ease;
+    }
+
+.btn-cancelar {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 4px;
+}
+
+    .btn-cancelar:hover {
+        background-color: #ccc;
+        transition: all 0.4s ease;
+    }
+
+.card-azul {
+    background-color: #337ab7;
+}
+
+.card-verde {
+    background-color: #bbd615;
+}
+
+.card-naranja {
+    background-color: #fea712;
+}
+
+/* Quitar los estilos para este elemento cuando se haga la sobrecarga del método ActionLink*/
+.control a {
+    background: none repeat scroll 0 0 #fff;
+    color: #666;
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    line-height: normal;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px #d1d1d1 solid;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+    .control a:hover {
+        padding: 6px 12px;
+        transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        -webkit-transition: all 0.3s linear;
+        background: #fdae03;
+        border-color: #fdae03;
+        color: #fff;
+    }
+
+.form-theme input[type="text"], input[type="number"], input[type="email"], input[type="tel"] {
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+}
+
+.form-theme input[type="submit"] {
+    margin: 25px 0 5px 0;
+}
+
+.form-theme label {
+    font-size: 14px;
+    color: #666;
+    padding: 0;
+}
+
+.form-theme .checkbox {
+    display: flex;
+    flex-direction: column;
+}
+
+    .form-theme .checkbox input[type="checkbox"] {
+        left: 90px;
+    }
+
+.form-theme input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/*Sobreescribe el estilo de los checkboxes*/
+[type="checkbox"]:checked + label,
+[type="checkbox"]:not(:checked) + label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+    [type="checkbox"]:checked + label:before,
+    [type="checkbox"]:not(:checked) + label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border: 1px solid #ddd;
+        background: #fff;
+    }
+
+input[type="checkbox"]:checked + label:after,
+input[type="checkbox"]:not(:checked) + label:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #00a69c;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="checkbox"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+[type="checkbox"]:disabled:checked + label:before,
+[type="checkbox"]:disabled:not(:checked) + label:before {
+    border-color: #ccc;
+    background-color: #eee;
+}
+
+[type="checkbox"]:disabled:checked + label:after {
+    background: #aaa;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+    /* Quitar el CSS de los a dentro de .form-actions cuando se haga la sobrecarga del método ActionLink*/
+    .form-actions a {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin: 0 4px;
+        color: #333;
+    }
+
+        .form-actions a:hover {
+            background-color: #ccc;
+            transition: all 0.4s ease;
+        }
+
+.label-forma {
+    background-color: #622B83;
+    color: #fff;
+}
+
+.fila-centrada {
+    text-align: center;
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-header {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/**********************
+PAGINA DE INICIO
+**********************/
+body {
+    background: url(/Content/Image/Etiketas/backgrounds/776.jpg);
+}
+
+.header-container, nav {
+    background: url(/Content/Image/Etiketas/backgrounds/775.jpg);
+}
+
+.main-container {
+    background: #fff;
+}
+
+.cart-container {
+    padding-top: 35px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.jtv-top-cart-box {
+    background: #622B83;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+    .jtv-top-cart-box:hover {
+        background: #8b51af;
+        transition: all 0.3s ease;
+    }
+
+    .jtv-top-cart-box i {
+        color: #fff;
+        margin-right: 10px;
+    }
+
+    .jtv-top-cart-box span.cart-price {
+        padding-bottom: 10px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+    }
+
+#nav {
+    padding: 0.3em 0em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+    #nav li a {
+        font-size: 16px;
+    }
+
+.navbar-logo {
+    max-width: 90px;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+.header-menu-container {
+    padding: 0px;
+    background-color: #fea712;
+}
+
+.circle-shopping-count {
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    width: 20px;
+    height: 20px;
+    background-color: #e81d25;
+    border-radius: 100%;
+    text-align: center;
+}
+
+    .circle-shopping-count span {
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 700;
+    }
+
+.jtv-top-banner {
+    padding: 25px 0px 25px;
+}
+
+    .jtv-top-banner .jtv-cont-box {
+        background: #b88cd2;
+    }
+
+.jtv-testimonial-block {
+    margin: 50px;
+}
+
+    .jtv-testimonial-block .block-title h3 {
+        padding: 20px 15px;
+    }
+
+.jtv-title h3 {
+    padding-bottom: 30px;
+}
+
+.jtv-custom-box {
+    padding-top: 1em;
+}
+
+    .jtv-custom-box a {
+        padding: 0 !important;
+    }
+
+    .jtv-custom-box i:hover {
+        color: #622B83;
+        transition: all 0.3s ease;
+    }
+
+.icono-etiquetas {
+    max-width: 40%;
+}
+
+/**********************
+PAGINA NOSOTROS
+**********************/
+#nosotros .static-contain p {
+    margin-bottom: 20px;
+}
+
+span.texto-resaltado {
+    font-weight: 800;
+    color: #622B83;
+}
+
+#nosotros .descripciones {
+    list-style: circle;
+    padding-left: 20px;
+}
+
+    #nosotros .descripciones li {
+        padding: 5px 0;
+    }
+
+#nosotros .img-lateral {
+    width: 100%;
+}
+
+/**********************
+PAGINA CONTACTO
+**********************/
+#contacto input {
+    background-color: #fff;
+}
+
+#contacto textarea {
+    background-color: #fff;
+}
+/**********************
+CARRITO DE COMPRA
+**********************/
+.cart_navigation {
+    margin-bottom: 25px;
+}
+
+.box-border {
+    margin-top: 30px;
+}
+
+.shipping_method span {
+    font-weight: 700;
+}
+
+.order-detail-content {
+    margin-top: 30px;
+}
+
+.checkout-envio {
+    text-align: left;
+}
+
+    .checkout-envio p {
+        font-weight: 400;
+    }
+
+.login-box {
+    display: flex;
+    justify-content: center;
+}
+
+.login-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 350px;
+    height: 250px;
+}
+
+    .login-cart h3, .login-cart p {
+        text-align: center;
+    }
+
+.facebook-button {
+    display: flex;
+    align-items: center;
+    background-color: #3b5998;
+    color: #fff;
+    width: 200px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .facebook-button:hover {
+        background-color: #4d6fb7;
+        transition: all 0.3s ease;
+    }
+
+    .facebook-button span {
+        display: inline-block;
+        padding-left: 30px;
+    }
+
+ul.step {
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    padding: 0px;
+}
+
+    ul.step li {
+        display: inline;
+        line-height: 30px;
+        width: 20%;
+        float: left;
+        text-align: center;
+        border-bottom: 3px solid #ccc;
+        font-size: 14px;
+    }
+
+        ul.step li.current-step {
+            border-bottom: 3px solid #8ac42f;
+        }
+
+/**********************
+DASHBOARD DE USUARIO
+**********************/
+.user-profile {
+    margin-bottom: 30px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .user-info .user-data {
+        text-align: center;
+    }
+
+/**********************
+MODULO DE ADMINISTRACION
+**********************/
+
+.box {
+    border: 1px solid #eaeaea;
+    padding: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+section.admin-panel {
+    margin: 30px 0 50px;
+}
+
+.admin-panel h3 {
+    margin-top: 0;
+}
+
+.admin-panel__info table a {
+    color: #333;
+}
+
+    .admin-panel__info table a:hover {
+        text-decoration: underline;
+    }
+
+.admin-panel__info .row {
+    margin-bottom: 40px;
+}
+
+    .admin-panel__info .row h3 {
+        margin-bottom: 35px;
+    }
+
+.admin-panel__card {
+    padding: 5px 15px 5px 15px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+    .admin-panel__card span {
+        font-size: 32px;
+        align-self: flex-end;
+    }
+
+.admin-panel__info .label {
+    padding: 7px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.admin-etiquetas__info .table {
+    margin-top: 15px;
+}
+
+    .admin-etiquetas__info .table td button {
+        margin: 0 5px;
+    }
+
+.admin-panel .forma {
+    margin-bottom: 20px;
+}
+
+
+#nuevaEtiqueta .entrada-categoria {
+    margin-bottom: 20px;
+}
+
+#nuevaEtiqueta label {
+    font-size: 14px;
+}
+
+#nuevaEtiqueta input[type="text"] {
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+}
+
+#nuevaEtiqueta input:focus {
+    border-color: #ddd;
+}
+
+.seleccion-formas .grupo-formas {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.check-forma {
+    display: flex;
+    align-items: center;
+    background-color: #622B83;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 5px;
+    padding: 5px 10px 5px 5px;
+}
+
+    .check-forma input[type="checkbox"] {
+        margin: 5px;
+    }
+
+.color-palette label {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0.15em;
+    padding: 1em;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px #ccc;
+}
+
+.show-color {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0.15em;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px #ccc;
+}
+
+.show-color-plain {
+    width: 16px;
+    height: 16px;
+}
+
+ul.step li > span {
+    cursor: pointer;
+}
+
+#img-upload {
+    max-width: 250px;
+}
+
+.upload-arte .input-group {
+    margin-bottom: 1em;
+}
+
+.arte-preview {
+    padding-top: 1em;
+}
+
+
+/**********************
+IMAGE SPLIT
+**********************/
+.split-parent {
+    padding: 35px 0px;
+}
+
+.fatherDiv {
+    clear: both;
+}
+
+    .fatherDiv div {
+        float: left;
+        display: ms-grid;
+        display: grid;
+    }
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+/**********************
+POSICION TEXTO ARTE-FORMA
+**********************/
+.parent {
+    display: inline-block;
+    position: relative;
+}
+
+.length {
+    background: rgba(80, 94,120, 0.4);
+    position: absolute;
+    top: 0;
+    cursor: move;
+}
+
+.length-hide {
+    color: transparent;
+    font-size: 18px;
+}
+
+.prev {
+    position: relative;
+}
+
+.text {
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.text-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .text-settings .text-actions {
+        margin: 20px 0px;
+    }
+
+.text-preview {
+    display: flex;
+    justify-content: center;
+}
+
+.align-button {
+    border-radius: 5px;
+    padding: 8px;
+}
+
+    .align-button:hover {
+        background-color: #c7c7c7;
+    }
+
+.button-accept {
+    background-color: #5cb85c;
+    color: white;
+}
+
+    .button-accept:hover {
+        background-color: #449d44;
+    }
+
+/**********************
+DETAILS ARTE-FORMA
+**********************/
+.arteforma-detail .img-container,
+.arteforma-detail .text-container {
+    position: absolute;
+}
+
+.forma-detail .form-container {
+    position: absolute;
+}
+
+.upload-div {
+    clear: both;
+}
